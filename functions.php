@@ -14,9 +14,11 @@ add_action( 'after_setup_theme', 'crb_load' );
 
 
 require( get_template_directory() . '/inc/cpt-gallery.php' );
-require( get_template_directory() . '/inc/cpt-frame.php' );
-require( get_template_directory() . '/inc/cpt-medium.php' );
-new ArtShop_CPT_Gallery();
-new ArtShop_CPT_Frame();
-new ArtShop_CPT_Medium();
+
+
+function register_taxonomies() {
+    require( get_template_directory() . '/inc/taxonomies.php' );
+}
+add_action( 'init', 'register_taxonomies', 0 );
+
 ?>
