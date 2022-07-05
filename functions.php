@@ -21,4 +21,6 @@ function register_taxonomies() {
 }
 add_action( 'init', 'register_taxonomies', 0 );
 
+require( get_template_directory() . '/inc/site-sections/gallery-section.php' );
+new ArtShop_CPT_Medium();
 ?>
