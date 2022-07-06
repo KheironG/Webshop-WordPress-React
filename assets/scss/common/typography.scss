@@ -1,0 +1,38 @@
+@font-face {
+ font-family: 'spartan_bold';
+ src: url('../assets/fonts/LeagueSpartan-Bold.ttf');
+ font-weight: 600;
+}
+@font-face {
+ font-family: 'spartan_medium';
+ src: url('../assets/fonts/LeagueSpartan-Medium.ttf');
+ font-weight: 500;
+}
+@font-face {
+ font-family: 'libre_regular';
+ src: url('../assets/fonts/LibreBaskerville-Regular.ttf');
+ font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'spartan_bold';
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+}
+
+h1 { font-size: 42px; line-height: 64px; }
+h2 { font-size: 33px; line-height: 51px; }
+h3 { font-size: 26px; line-height: 41px; }
+h4 { font-size: 20px; line-height: 33px; }
+h5 { font-size: 16px; line-height: 27px; }
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p {
+    margin-top: 10px;
+}
+
+p { margin-bottom: 30px; }
