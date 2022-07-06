@@ -6,12 +6,7 @@
 */
 get_header();
 the_content();
-echo do_shortcode('[photolab-gallery-app]');
+// echo do_shortcode('[photolab-gallery-app]');
 
-?>
-<div class="flex-center-column bg-orange-600">
-    <p>test</p>
-</div>
-<?php
 get_footer();
 ?>

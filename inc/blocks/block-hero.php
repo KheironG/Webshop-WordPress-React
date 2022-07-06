@@ -2,6 +2,8 @@
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
+wp_enqueue_style( "photolab-carbon-blocks-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
+
 function get_available_pages() {
     $get_pages = get_pages( array( 'hierarchical' => true ) );
     $pages = [];
@@ -12,7 +14,6 @@ function get_available_pages() {
     }
     return $pages;
 }
-
 
 Block::make( __( 'Photolab Hero' ) )
 	->add_fields( array(
@@ -26,14 +27,17 @@ Block::make( __( 'Photolab Hero' ) )
 			->set_value_type( 'url' )
 	) )
 	->set_icon( 'camera' )
+    ->set_mode( 'both' )
+    ->set_editor_style( 'photolab-carbon-blocks-css' )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 		?>
 		<div class="carbon-block-hero"
 			style="color:<?php echo esc_html( $fields['hero_text_colour'] ); ?>;background-image: url('<?php echo $fields['hero_background']; ?>') ">
 
-			<h1><?php echo esc_html( $fields['hero_title'] ); ?></h1>
-
-			<p><?php echo esc_html( $fields['hero_description'] ); ?></p>
+            <div class="text-center">
+                <h1><?php echo esc_html( $fields['hero_title'] ); ?></h1>
+    			<p><?php echo esc_html( $fields['hero_description'] ); ?></p>
+            </div>
 
 			<?php
 			if ( $fields['hero_button_url'] !== 'none' ) {

@@ -6,6 +6,7 @@ function artshop_carbon_fields() {
     //Gutenberg Blocks
     require( get_template_directory() . '/inc/blocks/block-hero.php' );
     require( get_template_directory() . '/inc/blocks/block-section.php' );
+    require( get_template_directory() . '/inc/blocks/block-guide.php' );
 }
 add_action( 'carbon_fields_register_fields', 'artshop_carbon_fields' );
 
