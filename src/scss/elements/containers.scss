@@ -1,3 +1,14 @@
-.container {
-    
+.flex-center-column {
+    @include flex-center-column;
+    width: 100%;
+}
+
+.flex-end-column {
+    @include flex-end-column;
+    width: 100%;
+}
+
+.flex-center-center {
+    width: 100%;
+    @include flex-center-center;
 }
