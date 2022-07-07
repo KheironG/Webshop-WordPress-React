@@ -12,6 +12,8 @@ Block::make( __( 'Photolab Guide' ) )
         Field::make( 'color', 'guide_text_colour', __( 'Text Color' ) ),
 		Field::make( 'color', 'guide_background', __( 'Background colour' ) )
             ->set_palette( array( '#E3E3E3', '#F6F6F8', '#FFFFFF' ) ),
+        Field::make( 'text', 'guide_button_text', __( 'Button Text' ) ),
+		Field::make( 'select', 'guide_button_url', __( 'Button Link' ) )->add_options( 'get_available_pages' ),
 
         Field::make( 'separator', 'one_separator', __( 'Step One' ) ),
         Field::make( 'text', 'one_icon', __( 'Icon' ) )->set_help_text( 'Font Awesome class' ),
@@ -83,6 +85,16 @@ Block::make( __( 'Photolab Guide' ) )
                 }
                 ?>
             </div>
+            <?php
+			if ( $fields['guide_button_url'] !== 'none' ) {
+				?>
+				<a class="hero-button-link" href="<?php echo esc_attr( $fields['guide_button_url'] ); ?>"
+					style="border-style:solid;border-width:1px;border-color:<?php echo esc_attr( $fields['guide_text_colour'] ) ?>;color:<?php echo esc_attr( $fields['hero_text_colour'] ); ?>;">
+					<?php echo esc_html( $fields['guide_button_text'] ); ?>
+				</a>
+				<?php
+			}
+			?>
         </div>
 		<?php
 	} );

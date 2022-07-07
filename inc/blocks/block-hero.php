@@ -2,19 +2,6 @@
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
-wp_enqueue_style( "photolab-carbon-blocks-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
-
-function get_available_pages() {
-    $get_pages = get_pages( array( 'hierarchical' => true ) );
-    $pages = [];
-	$pages['none'] = 'No link';
-    foreach ( $get_pages as $page ) {
-		$page_url = get_page_link($page->ID);
-        $pages[$page_url] = $page->post_title;
-    }
-    return $pages;
-}
-
 Block::make( __( 'Photolab Hero' ) )
 	->add_fields( array(
 		Field::make( 'text', 'hero_title', __( 'Title' ) ),
@@ -48,9 +35,7 @@ Block::make( __( 'Photolab Hero' ) )
 				</a>
 				<?php
 			}
-
 			?>
-
 		</div>
 		<?php
 	} );
