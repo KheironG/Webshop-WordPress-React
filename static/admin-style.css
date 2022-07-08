@@ -1,3 +1,35 @@
+.bg-orange-300 {
+  background-color: #FF8A65;
+}
+
+.bg-orange-600 {
+  background-color: #F4511E;
+}
+
+.bg-orange-900 {
+  background-color: #BF360C;
+}
+
+.orange-300 {
+  color: #FF8A65;
+}
+
+.orange-600 {
+  color: #F4511E;
+}
+
+.orange-900 {
+  color: #BF360C;
+}
+
+.bg-grey-1 {
+  background-color: #F6F6F8;
+}
+
+.bg-grey-2 {
+  background-color: #E3E3E3;
+}
+
 .flex-center-column {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -45,15 +77,37 @@
           align-items: center;
 }
 
-a.hero-button-link {
+a.hero-button-link,
+a.more-info-button,
+a.select-product-button {
   max-width: 100%;
   padding: 20px 35px;
   font-family: "spartan_medium";
   letter-spacing: 3px;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   color: black;
   border-color: black;
+}
+
+a.hero-button-link {
+  color: black;
+  border-color: black;
+}
+
+a.more-info-button {
+  padding: 15px 35px;
+  width: 125px;
+  color: white;
+  background-color: #F4511E;
+}
+
+a.select-product-button {
+  padding: 15px 35px;
+  width: 125px;
+  color: white;
+  background-color: #BF360C;
 }
 
 .carbon-block-section {
@@ -151,4 +205,56 @@ a.hero-button-link {
 }
 .carbon-block-guide-inst h4 {
   margin-top: 0px;
+}
+
+.carbon-block-previews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  grid-gap: 70px;
+  padding: 30px 20px 50px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.carbon-block-previews p {
+  margin-bottom: 0px;
+}
+.carbon-block-previews .category-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.carbon-block-previews .products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  grid-gap: 90px;
 }

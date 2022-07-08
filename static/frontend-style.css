@@ -182,15 +182,37 @@ p {
           align-items: center;
 }
 
-a.hero-button-link {
+a.hero-button-link,
+a.more-info-button,
+a.select-product-button {
   max-width: 100%;
   padding: 20px 35px;
   font-family: "spartan_medium";
   letter-spacing: 3px;
+  text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   color: black;
   border-color: black;
+}
+
+a.hero-button-link {
+  color: black;
+  border-color: black;
+}
+
+a.more-info-button {
+  padding: 15px 35px;
+  width: 125px;
+  color: white;
+  background-color: #F4511E;
+}
+
+a.select-product-button {
+  padding: 15px 35px;
+  width: 125px;
+  color: white;
+  background-color: #BF360C;
 }
 
 .carbon-block-section {
@@ -290,7 +312,7 @@ a.hero-button-link {
   margin-top: 0px;
 }
 
-.photolab-gallery-preview {
+.carbon-block-previews {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -304,4 +326,80 @@ a.hero-button-link {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
+  grid-gap: 70px;
+  padding: 30px 20px 50px 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.carbon-block-previews p {
+  margin-bottom: 0px;
+}
+.carbon-block-previews .category-selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.carbon-block-previews .products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  grid-gap: 90px;
+}
+
+.photolab-product-preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 390px;
+  max-width: 100%;
+  grid-gap: 20px;
+}
+.photolab-product-preview .image-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 275px;
+  overflow-y: hidden;
+}
+.photolab-product-preview h5, .photolab-product-preview p {
+  margin-top: 0;
+}
+.photolab-product-preview img {
+  max-width: 100%;
+  max-height: 100%;
 }

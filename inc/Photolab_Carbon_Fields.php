@@ -61,6 +61,7 @@ class Photolab_Carbon_Fields {
         require( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
         require( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
         require( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );
+        require( get_template_directory() . '/inc/gutenberg-blocks/block-previews.php' );
     }
 
 }

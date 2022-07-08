@@ -1,10 +1,33 @@
-a.hero-button-link {
+a.hero-button-link,
+a.more-info-button,
+a.select-product-button {
     max-width: 100%;
     padding: 20px 35px;
     font-family: 'spartan_medium';
     letter-spacing: 3px;
+    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
     color: black;
     border-color: black;
+}
+
+a.hero-button-link {
+    color: black;
+    border-color: black;
+}
+
+a.more-info-button {
+    padding: 15px 35px;
+    width: 125px;
+    color: white;
+    background-color: $orange-600;
+}
+
+a.select-product-button {
+    padding: 15px 35px;
+    width: 125px;
+    color: white;
+    background-color: $orange-900;
+
 }
