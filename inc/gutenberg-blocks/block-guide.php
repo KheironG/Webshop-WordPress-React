@@ -2,7 +2,7 @@
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
-wp_enqueue_style( "photolab-carbon-blocks-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
+wp_enqueue_style( "photolab-admin-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
 
 Block::make( __( 'Photolab Guide' ) )
 	->add_fields( array(
@@ -37,7 +37,7 @@ Block::make( __( 'Photolab Guide' ) )
 	) )
 	->set_icon( 'camera' )
     ->set_mode( 'both' )
-    ->set_editor_style( 'photolab-carbon-blocks-css' )
+    ->set_editor_style( 'photolab-admin-css' )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 
         ?>

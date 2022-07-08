@@ -15,7 +15,7 @@ Block::make( __( 'Photolab Hero' ) )
 	) )
 	->set_icon( 'camera' )
     ->set_mode( 'both' )
-    ->set_editor_style( 'photolab-carbon-blocks-css' )
+    ->set_editor_style( 'photolab-admin-css' )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 		?>
 		<div class="carbon-block-hero"

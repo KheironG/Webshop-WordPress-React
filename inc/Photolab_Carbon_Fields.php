@@ -21,7 +21,7 @@ class Photolab_Carbon_Fields {
 
     function register_carbon_fields() {
 
-        wp_enqueue_style( "photolab-carbon-blocks-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
+        wp_enqueue_style( "photolab-admin-css", get_template_directory_uri() . '/static/admin-style.css', array(), "1.0", "all" );
 
         function get_available_pages() {
             $get_pages = get_pages( array( 'hierarchical' => true ) );

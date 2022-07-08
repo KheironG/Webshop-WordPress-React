@@ -7,12 +7,25 @@ var notify = require('gulp-notify');
 var livereload = require('gulp-livereload');
 
 
-gulp.task('styles', function () {
+gulp.task('frontend-styles', function () {
      var processors = [
          cssnext({})
      ];
 
-    return gulp.src('assets/scss/style.scss')
+    return gulp.src('assets/scss/frontend-style.scss')
+         .pipe(sass())
+         .pipe(postcss(processors))
+         .pipe(notify("success"))
+         .pipe(gulp.dest('static/'))
+         .pipe(livereload());
+    });
+
+gulp.task('admin-styles', function () {
+     var processors = [
+         cssnext({})
+     ];
+
+    return gulp.src('assets/scss/admin-style.scss')
          .pipe(sass())
          .pipe(postcss(processors))
          .pipe(notify("success"))
@@ -22,5 +35,5 @@ gulp.task('styles', function () {
 
 gulp.task('watch:styles', function () {
     livereload.listen();
-    gulp.watch('assets/scss/**/*.scss', gulp.series('styles'));
+    gulp.watch('assets/scss/**/*.scss', gulp.series('frontend-styles', 'admin-styles'));
 });
