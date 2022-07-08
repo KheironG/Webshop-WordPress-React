@@ -3,10 +3,7 @@
 }
 
 .carbon-block-hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+    @include flex-center-column;
     height: 100vh;
     grid-gap: 20px;
     width: 100%;
@@ -20,39 +17,36 @@
 
 
 .carbon-block-guide {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    @include flex-center-column;
     width: 100%;
-    grid-gap: 60px;
+    grid-gap: 70px;
     width: 100%;
     padding: 30px 20px 50px 20px;
     box-sizing: border-box;
+
+    p {
+        margin-bottom: 0px;
+    }
 }
 
 .carbon-block-guide-instructions {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
     width: 100%;
-    grid-gap: 70px;
-    width: 100%;
+    grid-gap: 90px;
 }
 
 .carbon-block-guide-inst {
-    display: flex;
+    @include flex-center-column;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     grid-gap: 20px;
     width: 300px;
     max-width: 100%;
-    padding: 60px 40px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
     box-sizing: border-box;
-    border-radius: 5px;
+
+    h4 {
+        margin-top: 0px;
+    }
 }

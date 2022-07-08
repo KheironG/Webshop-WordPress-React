@@ -28,7 +28,7 @@ new Photlab_Taxonomies();
 
 
 function enq_photolab_scripts() {
-    wp_enqueue_style( "photolab-frontend-CSS", get_template_directory_uri() . '/static/style.css', array(), "1.0", "all" );
+    wp_enqueue_style( "photolab-frontend-CSS", get_template_directory_uri() . '/static/frontend-style.css', array(), "1.0", "all" );
 }
 add_action('wp_enqueue_scripts', 'enq_photolab_scripts');
 

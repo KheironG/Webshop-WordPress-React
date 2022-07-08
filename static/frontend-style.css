@@ -201,16 +201,16 @@ a.hero-button-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   height: 100vh;
   grid-gap: 20px;
   width: 100%;
@@ -227,8 +227,6 @@ a.hero-button-link {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -240,36 +238,36 @@ a.hero-button-link {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  grid-gap: 60px;
+  grid-gap: 70px;
   width: 100%;
   padding: 30px 20px 50px 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+.carbon-block-guide p {
+  margin-bottom: 0px;
 }
 
 .carbon-block-guide-instructions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
-  grid-gap: 70px;
-  width: 100%;
+  grid-gap: 90px;
 }
 
 .carbon-block-guide-inst {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -280,13 +278,14 @@ a.hero-button-link {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   grid-gap: 20px;
   width: 300px;
   max-width: 100%;
-  padding: 60px 40px;
-  -webkit-box-shadow: rgba(0, 0, 0, .15) 0px 2px 8px;
-          box-shadow: rgba(0, 0, 0, .15) 0px 2px 8px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  border-radius: 5px;
+}
+.carbon-block-guide-inst h4 {
+  margin-top: 0px;
 }

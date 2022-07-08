@@ -2,8 +2,6 @@
 use Carbon_Fields\Block;
 use Carbon_Fields\Field;
 
-wp_enqueue_style( "photolab-admin-css", get_template_directory_uri() . '/admin/css/carbon-blocks.css', array(), "1.0", "all" );
-
 Block::make( __( 'Photolab Guide' ) )
 	->add_fields( array(
         Field::make( 'separator', 'guide_separator', __( 'Guide details' ) ),
@@ -44,7 +42,7 @@ Block::make( __( 'Photolab Guide' ) )
         <div class="carbon-block-guide"
             style="color:<?php echo esc_html( $fields['guide_text_colour'] ); ?>;background-color:<?php echo $fields['guide_background']; ?>;">
             <?php
-            if ( $fields['guide_title'] !== '' || $fields['guide_description'] !== '') {
+            if ( !empty( $fields['guide_title'] ) || !empty( $fields['guide_description'] ) ) {
                 ?>
                 <div class="text-center">
                     <h2><?php echo esc_html( $fields['guide_title'] ); ?></h2>
@@ -55,7 +53,7 @@ Block::make( __( 'Photolab Guide' ) )
             ?>
             <div class="carbon-block-guide-instructions">
                 <?php
-                if ( $fields['one_instruction'] !== '' || $fields['one_title'] !== '' ) {
+                if ( !empty( $fields['one_instruction'] ) || !empty( $fields['one_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
 						<h4><?php echo esc_attr( $fields['one_title'] ); ?></h4>
@@ -64,7 +62,7 @@ Block::make( __( 'Photolab Guide' ) )
                     </div>
                     <?php
                 }
-                if ( $fields['two_instruction'] !== '' || $fields['two_title'] !== '' ) {
+                if ( !empty( $fields['two_instruction'] ) || !empty( $fields['two_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
 						<h4><?php echo esc_attr( $fields['two_title'] ); ?></h4>
@@ -73,16 +71,16 @@ Block::make( __( 'Photolab Guide' ) )
                     </div>
                     <?php
                 }
-                if ( $fields['three_instruction'] !== '' || $fields['three_title'] !== '' ) {
+                if ( !empty( $fields['three_instruction'] ) || !empty( $fields['three_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
 						<h4><?php echo esc_attr( $fields['three_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['three_icon'] ); ?>"></span>
-                        <h5><?php echo esc_html( $fields['three_instruction'] ); ?></h5>
+                        <p><?php echo esc_html( $fields['three_instruction'] ); ?></p>
                     </div>
                     <?php
                 }
-                if ( $fields['four_instruction'] !== '' || $fields['four_title'] !== '' ) {
+                if ( !empty( $fields['four_instruction'] ) || !empty( $fields['four_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
 						<h4><?php echo esc_attr( $fields['four_title'] ); ?></h4>
