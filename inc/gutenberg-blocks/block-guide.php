@@ -16,18 +16,22 @@ Block::make( __( 'Photolab Guide' ) )
 		Field::make( 'select', 'guide_button_url', __( 'Button Link' ) )->add_options( 'get_available_pages' ),
 
         Field::make( 'separator', 'one_separator', __( 'Step One' ) ),
+		Field::make( 'text', 'one_title', __( 'Title' ) ),
         Field::make( 'text', 'one_icon', __( 'Icon' ) )->set_help_text( 'Font Awesome class' ),
-        Field::make( 'text', 'one_instruction', __( 'Instruction' ) ),
+		Field::make( 'text', 'one_instruction', __( 'Instruction' ) ),
 
         Field::make( 'separator', 'two_separator', __( 'Step Two' ) ),
+		Field::make( 'text', 'two_title', __( 'Title' ) ),
         Field::make( 'text', 'two_icon', __( 'Icon' ) )->set_help_text( 'Font Awesome class' ),
         Field::make( 'text', 'two_instruction', __( 'Instruction' ) ),
 
         Field::make( 'separator', 'three_separator', __( 'Step Three' ) ),
+		Field::make( 'text', 'three_title', __( 'Title' ) ),
         Field::make( 'text', 'three_icon', __( 'Icon' ) )->set_help_text( 'Font Awesome class' ),
         Field::make( 'text', 'three_instruction', __( 'Instruction' ) ),
 
         Field::make( 'separator', 'four_separator', __( 'Step Four' ) ),
+		Field::make( 'text', 'four_title', __( 'Title' ) ),
         Field::make( 'text', 'four_icon', __( 'Icon' ) )->set_help_text( 'Font Awesome class' ),
         Field::make( 'text', 'four_instruction', __( 'Instruction' ) ),
 	) )
@@ -51,33 +55,37 @@ Block::make( __( 'Photolab Guide' ) )
             ?>
             <div class="carbon-block-guide-instructions">
                 <?php
-                if ( $fields['one_instruction'] !== '' ) {
+                if ( $fields['one_instruction'] !== '' || $fields['one_title'] !== '' ) {
                     ?>
                     <div class="carbon-block-guide-inst">
+						<h4><?php echo esc_attr( $fields['one_title'] ); ?></h4>
                         <span class="<?php echo esc_attr( $fields['one_icon'] ); ?>"></span>
-                        <h5><?php echo esc_html( $fields['one_instruction'] ); ?></h5>
+                        <p><?php echo esc_html( $fields['one_instruction'] ); ?></p>
                     </div>
                     <?php
                 }
-                if ( $fields['two_instruction'] !== '' ) {
+                if ( $fields['two_instruction'] !== '' || $fields['two_title'] !== '' ) {
                     ?>
                     <div class="carbon-block-guide-inst">
+						<h4><?php echo esc_attr( $fields['two_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['two_icon'] ); ?>"></span>
-                        <h5><?php echo esc_html( $fields['two_instruction'] ); ?></h5>
+                        <p><?php echo esc_html( $fields['two_instruction'] ); ?></p>
                     </div>
                     <?php
                 }
-                if ( $fields['three_instruction'] !== '' ) {
+                if ( $fields['three_instruction'] !== '' || $fields['three_title'] !== '' ) {
                     ?>
                     <div class="carbon-block-guide-inst">
+						<h4><?php echo esc_attr( $fields['three_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['three_icon'] ); ?>"></span>
                         <h5><?php echo esc_html( $fields['three_instruction'] ); ?></h5>
                     </div>
                     <?php
                 }
-                if ( $fields['four_instruction'] !== '' ) {
+                if ( $fields['four_instruction'] !== '' || $fields['four_title'] !== '' ) {
                     ?>
                     <div class="carbon-block-guide-inst">
+						<h4><?php echo esc_attr( $fields['four_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['four_icon'] ); ?>"></span>
                         <h5><?php echo esc_html( $fields['four_instruction'] ); ?></h5>
                     </div>
