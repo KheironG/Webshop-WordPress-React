@@ -21,6 +21,7 @@ class Photolab_Custom_WooCommerce {
 			'taxonomy' => 'gallery_sizes',
 			'object_ids' => $post->ID,
 		) );
+		$get_current_layout = get_post_meta( $post->ID, 'gallery_layout', true );
 		?>
 		<div class='options_group show_if_simple'>
 			<h4 style="padding-left:10px;">For Gallery Products</h4>
@@ -50,6 +51,17 @@ class Photolab_Custom_WooCommerce {
                     ?>
                 </div>
             </div>
+			<?php
+			woocommerce_wp_select(
+				array(
+					'id' => 'gallery_item_layout',
+					'name' => 'gallery_item_layout',
+					'label' => __('Set layout', 'photolab'),
+					'options' => array( 'portrait' => 'portrait', 'landscape' => 'landscape' ),
+					'value' => $get_current_layout
+				)
+			);
+			?>
 		</div>
 		<?php
 	}
@@ -57,9 +69,12 @@ class Photolab_Custom_WooCommerce {
 
 	function save_product_fields( $post_id ){
 		$gallery_item_size = $_POST['gallery_item_size'];
+		$gallery_item_layout = esc_html( $_POST['gallery_item_layout'] );
 		if( !empty( $gallery_item_size ) ) {
 			wp_set_post_terms( $post_id, $gallery_item_size, 'gallery_sizes' );
 		}
+			update_post_meta( $post_id, 'gallery_layout', $gallery_item_layout );
+
 	}
 
 }
