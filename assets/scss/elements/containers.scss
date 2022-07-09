@@ -12,3 +12,15 @@
     width: 100%;
     @include flex-center-center;
 }
+
+.flex-start-center {
+    width: 100%;
+    @include flex-start-center;
+}
+
+.c-gap-10 {
+    column-gap: 10px;
+}
+.c-gap-20 {
+    column-gap: 20px;
+}

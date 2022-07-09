@@ -21,7 +21,7 @@
     width: 100%;
     grid-gap: 70px;
     width: 100%;
-    padding: 30px 20px 50px 20px;
+    padding: 30px 20px 100px 20px;
     box-sizing: border-box;
 
     p {
@@ -55,7 +55,7 @@
     @include flex-center-column;
     width: 100%;
     grid-gap: 70px;
-    padding: 30px 20px 50px 20px;
+    padding: 30px 20px 100px 20px;
     box-sizing: border-box;
 
     p {
@@ -76,7 +76,7 @@
         align-items: flex-start;
         flex-wrap: wrap;
         width: 100%;
-        grid-gap: 90px;
+        grid-gap: 100px;
 
     }
 

@@ -10,6 +10,7 @@ a.select-product-button {
     text-transform: uppercase;
     color: black;
     border-color: black;
+    box-sizing: border-box;
 }
 
 a.hero-button-link {
@@ -18,15 +19,15 @@ a.hero-button-link {
 }
 
 a.more-info-button {
-    padding: 15px 35px;
-    width: 125px;
+    width: 100%;
+    padding: 10px 35px;
     color: white;
     background-color: $orange-600;
 }
 
 a.select-product-button {
-    padding: 15px 35px;
-    width: 125px;
+    width: 100%;
+    padding: 10px 35px;
     color: white;
     background-color: $orange-900;
 
