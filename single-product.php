@@ -1,19 +1,24 @@
 <?php
 get_header();
 
-print_r($post);
-
-$get_image_term = get_term_by( 'name', 'images', 'product_cat' );
-$get_image_categories = get_term_children( $get_image_term->term_id, 'product_cat' );
-
-
+$product = wc_get_product( $post->ID );
+$price_style = !empty( $product->sale_price ) ? 'line-through' : '';
+$sale_price =  !empty( $product->sale_price ) ? '<h4 class="red">'.wc_price( $product->sale_price ).'</h4>' : '';
 ?>
-<div class="photolab-gallery-preview">
-    <img src="" alt="">
-    <h5>Title</h5>
-    <p>Price</p>
-    <a href="#">More info</a>
-    <a href="#">Select</a>
+
+<div class="photolab-single-product">
+    <div class="single-product-images">
+        <img src="<?php echo esc_attr( wp_get_attachment_url( $product->get_image_id() ) ); ?>" alt="">
+    </div>
+    <div class="single-product-info">
+        <h2><?php echo esc_html_e( $post->post_title ); ?></h2>
+        <div class="flex-start-center c-gap-20">
+            <?php echo $sale_price; ?>
+            <h4 class="<?php echo $price_style; ?>"><?php echo wc_price( $product->price ); ?></h4>
+        </div>
+        <p><?php echo esc_html_e( $product->short_description ); ?></p>
+        <a href="#" class="select-product-button"> <?php echo __( 'välj och fortsätt' );  ?></a>
+    </div>
 </div>
 <?php
 get_footer();

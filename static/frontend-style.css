@@ -16,6 +16,20 @@ header {
 
 main {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .bg-orange-300 {
@@ -473,4 +487,83 @@ a.select-product-button {
 .photolab-product-preview img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.photolab-single-product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 1300px;
+  max-width: 100%;
+  height: 80vh;
+  -webkit-column-gap: 70px;
+     -moz-column-gap: 70px;
+          column-gap: 70px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 70px 70px 70px 70px;
+  -webkit-box-shadow: rgba(0, 0, 0, .15) 0px 2px 8px;
+          box-shadow: rgba(0, 0, 0, .15) 0px 2px 8px;
+}
+@media (max-width: 950px) {
+  .photolab-single-product {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    padding: 35px 35px 35px 35px;
+    -webkit-column-gap: 35px;
+       -moz-column-gap: 35px;
+            column-gap: 35px;
+  }
+}
+.photolab-single-product .single-product-images {
+  grid-column: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.photolab-single-product .single-product-images img {
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 950px) {
+  .photolab-single-product .single-product-images {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+.photolab-single-product .single-product-info {
+  grid-column: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+@media (max-width: 950px) {
+  .photolab-single-product .single-product-info {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
