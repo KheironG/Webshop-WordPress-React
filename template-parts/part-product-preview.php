@@ -6,7 +6,6 @@ $discount    =  !empty( $args->sale_price ) ? '<h5 class="red">'. round( intval(
 $image       = wp_get_attachment_image_src( $args->image_id, 'full'  );
 $image_class = $image[1] > $image[2] ? "landscape-img" : "portrait-img" ;
 $permalink   = get_permalink( $args->get_id() );
-
 ?>
 
 <div class="photolab-product-preview">

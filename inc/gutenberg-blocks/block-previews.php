@@ -59,6 +59,7 @@ Block::make( __( 'Product Previews' ) )
 				}
 				?>
 			</div>
+			<p onclick="photolabGetProducts()">test</p>
 		</div>
 		<?php
 

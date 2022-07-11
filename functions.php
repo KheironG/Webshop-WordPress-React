@@ -1,7 +1,5 @@
 <?php
 
-
-
 /**
  * Handles custom product types for WooCommerce
  *
@@ -26,14 +24,22 @@ require_once( get_template_directory() . '/inc/taxonomies.php' );
 new Photlab_Taxonomies();
 
 
-
-function enq_photolab_scripts() {
-    wp_enqueue_style( "photolab-frontend-CSS", get_template_directory_uri() . '/static/frontend-style.css', array(), "1.0", "all" );
-}
-add_action('wp_enqueue_scripts', 'enq_photolab_scripts');
-
+/**
+ * Registers styles and scripts
+ *
+ */
+require_once( get_template_directory() . '/inc/Photolab_Styles_Scripts.php' );
+new Photolab_Styles_Scripts();
 
 
 add_theme_support( 'post-thumbnails' );
 
+
+/**
+ * Handles woocommerce ajax handler and callback
+ *
+ */
+require __DIR__ . '/vendor/autoload.php';
+require_once( get_template_directory() . '/inc/WooCommerce_Ajax.php' );
+new WooCommerce_Ajax();
 ?>
