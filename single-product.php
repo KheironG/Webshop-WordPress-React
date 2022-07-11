@@ -1,6 +1,5 @@
 <?php
 get_header();
-
 $product = wc_get_product( $post->ID );
 $price_style = !empty( $product->sale_price ) ? 'line-through' : '';
 $sale_price =  !empty( $product->sale_price ) ? '<h4 class="red">'.wc_price( $product->sale_price ).'</h4>' : '';

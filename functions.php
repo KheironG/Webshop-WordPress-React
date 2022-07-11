@@ -33,4 +33,7 @@ function enq_photolab_scripts() {
 add_action('wp_enqueue_scripts', 'enq_photolab_scripts');
 
 
+
+add_theme_support( 'post-thumbnails' );
+
 ?>

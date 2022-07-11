@@ -287,5 +287,5 @@ a.select-product-button {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  grid-gap: 100px;
+  grid-gap: 90px;
 }
