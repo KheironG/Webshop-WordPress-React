@@ -66,7 +66,6 @@ class Photolab_Custom_WooCommerce {
 		<?php
 	}
 
-
 	function save_product_fields( $post_id ){
 		$gallery_item_size = $_POST['gallery_item_size'];
 		$gallery_item_layout = esc_html( $_POST['gallery_item_layout'] );

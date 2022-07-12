@@ -37,10 +37,10 @@ Block::make( __( 'Product Previews' ) )
             }
             ?>
 			<div class="category-selector">
-				<select class="" name="">
+				<select id="products-category" name="product-preview-category-selector">
 					<?php
 					$product_category = get_term_by( 'name', $fields['previews_category'], 'product_cat' );
-					$category_children = get_terms( 'product_cat', ['child_of'=>$get_product_category->term_id ] );
+					$category_children = get_terms( 'product_cat', ['child_of'=> $product_category->term_id ] );
 					$options = [];
 					$options .= '<option value="">Category</option>';
 					foreach ( $category_children as $category_children ) {
@@ -73,12 +73,13 @@ Block::make( __( 'Product Previews' ) )
 						echo $products->total;
 						?>
 					</small>
-					<a class="hero-button-link" href="#">
+					<div onclick="photolabPaginateProducts();" class="paginate-button">
 						<?php echo __( 'hämta flera' ); ?>
-					</a>
+					</div>
 				</div>
-				<input id="products-per-page" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
+				<input id="products-limit" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
 				<input id="products-offset" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
+				<input id="products-category" type="hidden" value="<?php echo $product_category->term_id; ?>">
 				<?php
 			}
 			?>

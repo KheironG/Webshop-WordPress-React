@@ -1,19 +1,15 @@
-function photolabGetProducts() {
+function photolabPaginateProducts() {
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', woocommerce_ajax.ajax_url + '?action=photolab_ajax', true );
-    xhr.onreadystatechange = function() {
-        if ( this.readyState == 4 && this.status == 200 ) {
+    event.preventDefault();
 
-            const response  = JSON.parse(this.response);
-            console.log(response);
+    const limit = '&limit=' +document.getElementById('products-limit').value;
+    const offset  = '&offset=' + document.getElementById('products-offset').value;
+    const category = '&categories=' + document.getElementById('products-category').value;
 
-        } else if ( this.status != 200 ) {
-            console.log(this.status);
-        }
+    fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + limit + offset + category )
+        .then(response => response.json())
+        .then(data => console.log(data));
 
-
-}
-    xhr.send();
+    return;
 
 }

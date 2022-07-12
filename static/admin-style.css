@@ -116,7 +116,8 @@
 
 a.hero-button-link,
 a.more-info-button,
-a.select-product-button {
+a.select-product-button,
+.paginate-button {
   max-width: 100%;
   padding: 20px 35px;
   font-family: "spartan_medium";
@@ -128,11 +129,22 @@ a.select-product-button {
   border-color: black;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
-a.hero-button-link {
+a.hero-button-link,
+.paginate-button {
   color: black;
   border: 1px solid black;
+}
+
+.paginate-button {
+  max-width: 100%;
+  padding: 10px 35px;
 }
 
 a.more-info-button {
