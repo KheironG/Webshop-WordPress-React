@@ -37,7 +37,7 @@ Block::make( __( 'Product Previews' ) )
             }
             ?>
 			<div class="category-selector">
-				<select id="products-category" name="product-preview-category-selector">
+				<select id="products-category-selected" name="product-preview-category-selector" onchange="photolabGetProducts();">
 					<?php
 					$product_category = get_term_by( 'name', $fields['previews_category'], 'product_cat' );
 					$category_children = get_terms( 'product_cat', ['child_of'=> $product_category->term_id ] );

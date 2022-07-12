@@ -39,14 +39,13 @@ class WooCommerce_Ajax
               ]
         );
 
-
+        $task = $_GET['task'];
         $limit = $_GET['limit'];
         $offset = $_GET['offset'];
         $category = $_GET['category'];
+        $category_param = $task === 'get' ? 'category' : 'categories';
 
-        $response = [ $limit, $offset, $category ];
-
-        $response = $woocommerce->get( 'products', [ 'status' => 'publish', 'categories' => $category, 'limit' => $limit, 'offset' => $offset ] );
+        $response = $woocommerce->get( 'products', [ 'status' => 'publish', $category_param => $category, 'limit' => $limit, 'offset' => $offset ] );
         echo json_encode($response);
         exit;
 
