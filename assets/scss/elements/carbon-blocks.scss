@@ -71,18 +71,12 @@
     }
 
     .products {
-        @include flex-center-column;
-        width: 100%;
-    }
-    
-    .products-section {
         display: flex;
         justify-content: center;
         align-items: flex-start;
         flex-wrap: wrap;
         width: 100%;
-        grid-gap: 90px;
-
+        column-gap: 90px;
     }
 
 }

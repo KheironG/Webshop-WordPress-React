@@ -49,17 +49,15 @@ Block::make( __( 'Product Previews' ) )
 					?>
 				</select>
 			</div>
-			<div class="products">
-				<div class="products-section">
-					<?php
-					$per_page = !empty( $fields['previews_per_page'] ) ? $fields['previews_per_page'] : 9;
-					$args = array( 'category' => array( $fields['previews_category'] ), 'limit' => $per_page, 'paginate' => true );
-					$products = wc_get_products( $args );
-					foreach ( $products->products as $product ) {
-						get_template_part( 'template-parts/part', 'product-preview', $product );
-					}
-					?>
-				</div>
+			<div id="product-previews-container" class="products">
+				<?php
+				$per_page = !empty( $fields['previews_per_page'] ) ? $fields['previews_per_page'] : 9;
+				$args = array( 'category' => array( $fields['previews_category'] ), 'limit' => $per_page, 'paginate' => true );
+				$products = wc_get_products( $args );
+				foreach ( $products->products as $product ) {
+					get_template_part( 'template-parts/part', 'product-preview', $product );
+				}
+				?>
 			</div>
 			<?php
 			if ( $products->max_num_pages > 1 ) {

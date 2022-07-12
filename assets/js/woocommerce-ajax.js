@@ -7,7 +7,7 @@ function photolabGetProducts() {
     const task = '&task=get';
 
     fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + limit + category )
-        .then(response => response.json())
+        .then(response => response.text())
         .then(data => console.log(data));
 
     return;
@@ -24,8 +24,14 @@ function photolabPaginateProducts() {
     const task = '&task=paginate';
 
     fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + limit + offset + category )
-        .then(response => response.json())
-        .then(data => console.log(data));
+        .then(response => response.text())
+        .then( html => {
+            const domParser = new DOMParser();
+            const products = domParser.parseFromString( html, "text/html");
+            for ( let product of products.body.children ) {
+                document.getElementById('product-previews-container').append(product);
+            }
+        } );
 
     return;
 
