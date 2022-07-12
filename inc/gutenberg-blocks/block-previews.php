@@ -17,21 +17,12 @@ Block::make( __( 'Product Previews' ) )
 				'mediums' => __( 'Print Mediums' ),
 				'passpartouts' => __( 'Passepartouts' ),
 			) ),
+		Field::make( 'text', 'previews_per_page', __( 'Products per page' ) )->set_help_text( 'Products to show per page. Defaults to 9.' ),
 	) )
 	->set_icon( 'camera' )
     ->set_mode( 'both' )
     ->set_editor_style( 'photolab-admin-css' )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
-		function get_product_children() {
-			$product_category = get_term_by( 'name', $fields['previews_category'], 'product_cat' );
-			$category_children = get_terms( 'product_cat', ['child_of'=>$get_product_category->term_id ] );
-			$options = [];
-			$options .= '<option value="">Category</option>';
-			foreach ( $category_children as $category_children ) {
-				$options .= '<option value="' . $category_children->term_id . '">'. $category_children->name .'</option>';
-			}
-			return $options;
-		}
 		?>
 		<div class="carbon-block-previews"
 			style="color:<?php echo esc_html( $fields['previews_text_colour'] ); ?>;background-color:<?php echo $fields['previews_background'] ?>;">
@@ -47,21 +38,51 @@ Block::make( __( 'Product Previews' ) )
             ?>
 			<div class="category-selector">
 				<select class="" name="">
-					<?php echo get_product_children(); ?>
+					<?php
+					$product_category = get_term_by( 'name', $fields['previews_category'], 'product_cat' );
+					$category_children = get_terms( 'product_cat', ['child_of'=>$get_product_category->term_id ] );
+					$options = [];
+					$options .= '<option value="">Category</option>';
+					foreach ( $category_children as $category_children ) {
+						echo '<option value="' . $category_children->term_id . '">'. $category_children->name .'</option>';
+					}
+					?>
 				</select>
 			</div>
 			<div class="products">
-				<?php
-				$args = array( 'category' => array( $fields['previews_category'] ) );
-				$products = wc_get_products( $args );
-				foreach ( $products as $product ) {
-					get_template_part( 'template-parts/part', 'product-preview', $product );
-				}
-				?>
+				<div class="products-section">
+					<?php
+					$per_page = !empty( $fields['previews_per_page'] ) ? $fields['previews_per_page'] : 9;
+					$args = array( 'category' => array( $fields['previews_category'] ), 'limit' => $per_page, 'paginate' => true );
+					$products = wc_get_products( $args );
+					foreach ( $products->products as $product ) {
+						get_template_part( 'template-parts/part', 'product-preview', $product );
+					}
+					?>
+				</div>
 			</div>
-			<p onclick="photolabGetProducts()">test</p>
+			<?php
+			if ( $products->max_num_pages > 1 ) {
+				?>
+				<div class="flex-center-column grid-gap-10">
+					<small>
+						<?php
+						echo __( 'visar ');
+						echo $per_page;
+						echo __( ' av ');
+						echo $products->total;
+						?>
+					</small>
+					<a class="hero-button-link" href="#">
+						<?php echo __( 'hämta flera' ); ?>
+					</a>
+				</div>
+				<input id="products-per-page" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
+				<input id="products-offset" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
+				<?php
+			}
+			?>
 		</div>
 		<?php
-
 	} );
 ?>

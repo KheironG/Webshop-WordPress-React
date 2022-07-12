@@ -9,6 +9,7 @@
      new Photolab_Custom_WooCommerce();
  }
 
+
  /**
   * Handles Carbon fields and blocks
   *
@@ -16,11 +17,12 @@
  require_once( get_template_directory() . '/inc/Photolab_Carbon_Fields.php' );
  new Photolab_Carbon_Fields();
 
+
 /**
  * Registers custom taxonomies
  *
  */
-require_once( get_template_directory() . '/inc/taxonomies.php' );
+require_once( get_template_directory() . '/inc/Photolab_Taxonomies.php' );
 new Photlab_Taxonomies();
 
 

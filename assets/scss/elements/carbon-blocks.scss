@@ -71,6 +71,11 @@
     }
 
     .products {
+        @include flex-center-column;
+        width: 100%;
+    }
+    
+    .products-section {
         display: flex;
         justify-content: center;
         align-items: flex-start;

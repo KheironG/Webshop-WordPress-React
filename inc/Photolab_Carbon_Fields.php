@@ -58,10 +58,10 @@ class Photolab_Carbon_Fields {
             ) );
 
         //Gutenberg Blocks
-        require( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
-        require( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
-        require( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );
-        require( get_template_directory() . '/inc/gutenberg-blocks/block-previews.php' );
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-previews.php' );
     }
 
 }
