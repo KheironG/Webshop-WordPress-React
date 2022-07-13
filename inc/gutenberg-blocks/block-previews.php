@@ -41,8 +41,9 @@ Block::make( __( 'Product Previews' ) )
 					<?php
 					$product_category = get_term_by( 'name', $fields['previews_category'], 'product_cat' );
 					$category_children = get_terms( 'product_cat', ['child_of'=> $product_category->term_id ] );
-					$options = [];
-					$options .= '<option value="">Category</option>';
+					?>
+					<option value="<?php echo $product_category->term_id; ?>">Category</option>
+					<?php
 					foreach ( $category_children as $category_children ) {
 						echo '<option value="' . $category_children->term_id . '">'. $category_children->name .'</option>';
 					}
@@ -60,27 +61,17 @@ Block::make( __( 'Product Previews' ) )
 				?>
 			</div>
 			<?php
-			if ( $products->max_num_pages > 1 ) {
-				?>
-				<div class="flex-center-column grid-gap-10">
-					<small>
-						<?php
-						echo __( 'visar ');
-						echo $per_page;
-						echo __( ' av ');
-						echo $products->total;
-						?>
-					</small>
-					<div onclick="photolabPaginateProducts();" class="paginate-button">
-						<?php echo __( 'hämta flera' ); ?>
-					</div>
-				</div>
-				<input id="products-limit" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
-				<input id="products-offset" type="hidden" value="<?php echo $fields['previews_per_page']; ?>">
-				<input id="products-category" type="hidden" value="<?php echo $product_category->term_id; ?>">
-				<?php
-			}
+			$paginate_class = $products->max_num_pages > 1 ? '' : 'hidden';
 			?>
+			<div class="flex-center-column grid-gap-10">
+				<div onclick="photolabPaginateProducts();" id="paginate" class="paginate-button <?php echo $paginate_class; ?>">
+					<?php echo __( 'hämta flera' ); ?>
+				</div>
+				<input id="products-limit" type="hidden"value="<?php echo $fields['previews_per_page']; ?>">
+				<input id="products-offset" type="hidden"value="<?php echo $fields['previews_per_page']; ?>">
+				<input id="products-total" type="hidden"value="<?php echo $products->total; ?>">
+				<input id="products-category" type="hidden"value="<?php echo $product_category->term_id; ?>">
+			</div>
 		</div>
 		<?php
 	} );

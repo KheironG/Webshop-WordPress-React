@@ -1,12 +1,11 @@
 <?php
 /**
-* Template Name: Gallery
+* Template Name: Gallery App
 *
 * @since Art Shop 1.0
 */
 get_header();
 the_content();
-// echo do_shortcode('[photolab-gallery-app]');
-
+echo do_shortcode('[photolab-gallery-app]');
 get_footer();
 ?>

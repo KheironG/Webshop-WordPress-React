@@ -27,7 +27,7 @@ $image_class = $image[1] > $image[2] ? "landscape-img" : "portrait-img" ;
         </div>
     </div>
     <div class="button-container">
-        <a class="more-info-button" href="<?php echo $permalink; ?>"><?php echo __('Mer info'); ?></a>
-        <a class="select-product-button" href="#"><?php echo __('anpassa'); ?></a>
+        <!-- <a class="more-info-button" href="<?php echo $permalink; ?>"><?php echo __('Mer info'); ?></a> -->
+        <a class="select-product-button" href="#"><?php echo __('välj'); ?></a>
     </div>
 </div>

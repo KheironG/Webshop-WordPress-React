@@ -43,7 +43,13 @@ class WooCommerce_Ajax
         $category = filter_var( $_GET['category'], FILTER_SANITIZE_STRING );
         $category_param = $task == 'get' ? 'category' : 'categories';
 
-        $query = $woocommerce->get( 'products', [ 'status' => 'publish', $category_param => $category, 'limit' => $limit, 'offset' => $offset ] );
+        if ( $task === 'total' ) {
+            $count = get_term( intval( $category ), 'product_cat' );
+            echo json_encode($count->count);
+            exit;
+        }
+
+        $query = $woocommerce->get( 'products', [ 'status' => 'publish', $category_param => $category, 'per_page' => $limit, 'offset' => $offset ] );
 
         ob_start();
         foreach ( $query as $args ) {
