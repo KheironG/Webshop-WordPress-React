@@ -2,7 +2,7 @@
 /**
 * Template Name: Gallery App
 *
-* @since Art Shop 1.0
+* @since Photolab 1.0
 */
 get_header();
 the_content();

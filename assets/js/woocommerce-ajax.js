@@ -16,6 +16,8 @@ function photolabGetProducts() {
     const category = '&category=' + $category.value;
     const task = '&task=get';
 
+    console.log(woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + limit + category);
+
     fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + limit + category )
         .then(response => response.text())
         .then(html => {

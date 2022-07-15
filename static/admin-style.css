@@ -154,11 +154,13 @@ a.more-info-button {
   background-color: #F4511E;
 }
 
-a.select-product-button {
+a.select-product-button,
+.woocommerce .woocommerce-form-login .woocommerce-form-login__submit {
   width: 100%;
   padding: 10px 35px;
   color: white;
   background-color: #BF360C;
+  border-radius: none;
 }
 
 .carbon-block-section {

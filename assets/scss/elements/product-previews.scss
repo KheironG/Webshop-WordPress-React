@@ -5,6 +5,7 @@
     grid-gap: 20px;
     box-sizing: border-box;
 
+
     .image-container {
         @include flex-center-center;
         position: relative;
@@ -12,16 +13,19 @@
         height: 350px;
     }
 
+
     .info-container {
         @include flex-start-column;
         width: 100%;
     }
+
 
     .button-container {
         @include flex-center-center;
         grid-gap: 5px;
         width: 100%;
     }
+
 
     h5, p {
         margin-top: 0;

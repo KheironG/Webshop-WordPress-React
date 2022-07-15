@@ -1,0 +1,35 @@
+.login-container {
+    @include flex-center-column;
+    max-width: 100%;
+    width: 400px;
+
+    .buttons {
+        @include flex-center-center;
+        width: 100%;
+
+        .button {
+            flex: 1;
+            max-width: 100%;
+            padding: 20px 10px;
+            font-family: 'spartan_medium';
+            letter-spacing: 3px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: white;
+            box-sizing: border-box;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            background-color: $orange-600;
+            border: 1px solid $orange-600;
+        }
+
+        .button-inactive {
+            color: $orange-600;
+            background-color: white;
+            border: 1px solid $orange-600;
+        }
+    }
+
+}

@@ -5,6 +5,7 @@
 @import 'assets/scss/common/dimensions';
 @import 'assets/scss/common/typography';
 @import 'assets/scss/common/images';
+@import 'assets/scss/common/forms';
 
 @import 'assets/scss/elements/containers';
 @import 'assets/scss/elements/buttons';
@@ -12,3 +13,6 @@
 @import 'assets/scss/elements/product-previews';
 
 @import 'assets/scss/posts/single-product';
+
+@import 'assets/scss/templates/my-account';
+@import 'assets/scss/templates/login';

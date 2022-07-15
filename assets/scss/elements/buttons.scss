@@ -34,10 +34,11 @@ a.more-info-button {
     background-color: $orange-600;
 }
 
-a.select-product-button {
+a.select-product-button,
+.woocommerce .woocommerce-form-login .woocommerce-form-login__submit {
     width: 100%;
     padding: 10px 35px;
     color: white;
     background-color: $orange-900;
-
+    border-radius: none;
 }

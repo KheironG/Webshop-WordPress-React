@@ -44,4 +44,12 @@ add_theme_support( 'post-thumbnails' );
 require __DIR__ . '/vendor/autoload.php';
 require_once( get_template_directory() . '/inc/WooCommerce_Ajax.php' );
 new WooCommerce_Ajax();
+
+
+/**
+ * Handles woocommerce ajax handler and callback
+ *
+ */
+require_once( get_template_directory() . '/inc/Photolab_Shortcodes.php' );
+new Photolab_Shortcodes();
 ?>
