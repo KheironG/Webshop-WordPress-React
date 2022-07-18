@@ -4,6 +4,9 @@ class Photolab_Custom_WooCommerce {
 	public function __construct() {
 		add_action( 'woocommerce_product_options_general_product_data',  array( $this, 'add_general_product_tab' ) );
 		add_action( 'woocommerce_process_product_meta', array( $this, 'save_product_fields' ) );
+		if ( is_singular( 'product' ) ) {
+			add_action( 'init', array( $this, 'allow_file_upload' ) );
+		}
 	}
 
 
@@ -74,6 +77,18 @@ class Photolab_Custom_WooCommerce {
 		}
 			update_post_meta( $post_id, 'gallery_layout', $gallery_item_layout );
 
+	}
+
+
+	function allow_file_upload() {
+		global $post;
+		$product = wc_get_product( $post->ID );
+		$customizable = $product->get_attribute('pa_customer-customizable');
+		if ( !empty( $customizable) && $post_type-> 'product' ) {
+			$role = get_role( 'customer' );
+			$role->add_cap( 'upload_files', true );
+		}
+		return;
 	}
 
 }
