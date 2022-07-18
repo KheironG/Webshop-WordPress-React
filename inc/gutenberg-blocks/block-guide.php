@@ -56,8 +56,8 @@ Block::make( __( 'Photolab Guide' ) )
                 if ( !empty( $fields['one_instruction'] ) || !empty( $fields['one_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
-						<h4><?php echo esc_attr( $fields['one_title'] ); ?></h4>
                         <span class="<?php echo esc_attr( $fields['one_icon'] ); ?>"></span>
+						<h4><?php echo esc_attr( $fields['one_title'] ); ?></h4>
                         <p><?php echo esc_html( $fields['one_instruction'] ); ?></p>
                     </div>
                     <?php
@@ -65,8 +65,8 @@ Block::make( __( 'Photolab Guide' ) )
                 if ( !empty( $fields['two_instruction'] ) || !empty( $fields['two_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
-						<h4><?php echo esc_attr( $fields['two_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['two_icon'] ); ?>"></span>
+						<h4><?php echo esc_attr( $fields['two_title'] ); ?></h4>
                         <p><?php echo esc_html( $fields['two_instruction'] ); ?></p>
                     </div>
                     <?php
@@ -74,8 +74,8 @@ Block::make( __( 'Photolab Guide' ) )
                 if ( !empty( $fields['three_instruction'] ) || !empty( $fields['three_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
-						<h4><?php echo esc_attr( $fields['three_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['three_icon'] ); ?>"></span>
+						<h4><?php echo esc_attr( $fields['three_title'] ); ?></h4>
                         <p><?php echo esc_html( $fields['three_instruction'] ); ?></p>
                     </div>
                     <?php
@@ -83,9 +83,9 @@ Block::make( __( 'Photolab Guide' ) )
                 if ( !empty( $fields['four_instruction'] ) || !empty( $fields['four_title'] ) ) {
                     ?>
                     <div class="carbon-block-guide-inst">
-						<h4><?php echo esc_attr( $fields['four_title'] ); ?></h4>
                         <span class=" <?php echo esc_attr( $fields['four_icon'] ); ?>"></span>
-                        <h5><?php echo esc_html( $fields['four_instruction'] ); ?></h5>
+						<h4><?php echo esc_attr( $fields['four_title'] ); ?></h4>
+                        <p><?php echo esc_html( $fields['four_instruction'] ); ?></p>
                     </div>
                     <?php
                 }

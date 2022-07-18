@@ -3,7 +3,7 @@
 }
 
 .carbon-block-hero {
-    @include flex-center-column;
+    @include flex-end-column;
     height: 100vh;
     grid-gap: 20px;
     width: 100%;
@@ -79,4 +79,41 @@
         column-gap: 90px;
     }
 
+}
+
+.carbon-block-advert-single,
+.carbon-block-advert-double  {
+    width: 100%;
+    height: 600px;
+}
+
+.carbon-block-advert-single {
+    @include flex-center-column;
+}
+
+.carbon-block-advert-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media ( max-width: 850px ){
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: auto;
+    }
+
+    .column-1 {
+        width: 100%;
+        height: 100%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+    }
+
+    .column-2 {
+        @include flex-center-column;
+    }
 }
