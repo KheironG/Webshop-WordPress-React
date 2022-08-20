@@ -4,8 +4,13 @@
 *
 * @since Photolab 1.0
 */
-get_header();
-the_content();
-echo do_shortcode('[photolab-gallery-app]');
-get_footer();
-?>
+get_header(); ?>
+
+<main>
+    <?php
+    the_content();
+    echo do_shortcode('[photolab-gallery-app]');
+    ?>
+</main>
+
+<?php get_footer(); ?>

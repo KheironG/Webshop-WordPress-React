@@ -81,14 +81,14 @@ class Photolab_Custom_WooCommerce {
 
 
 	function allow_file_upload() {
-		global $post;
-		$product = wc_get_product( $post->ID );
-		$customizable = $product->get_attribute('pa_customer-customizable');
-		if ( !empty( $customizable) && $post_type-> 'product' ) {
-			$role = get_role( 'customer' );
-			$role->add_cap( 'upload_files', true );
-		}
-		return;
+		// global $post;
+		// $product = wc_get_product( $post->ID );
+		// $customizable = $product->get_attribute('pa_customer-customizable');
+		// if ( !empty( $customizable ) && $post_type-> 'product' ) {
+		// 	$role = get_role( 'customer' );
+		// 	$role->add_cap( 'upload_files', true );
+		// }
+		// return;
 	}
 
 }

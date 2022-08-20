@@ -1,0 +1,61 @@
+header {
+    @include flex-start-column;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    width: 240px;
+    height: 100vh;
+    padding-top: 50px;
+    background-color: $white;
+    color: $grey-3;
+    box-sizing: border-box;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    a:hover {
+        color: black;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        margin-top: 0px;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    @media ( max-width: 1000px ) {
+        @include flex-space-between;
+        width: 100vw;
+        height: 100px;
+        padding-top: 0px;
+        padding-left: 30px;
+        padding-right: 30px;
+        flex-direction: row;
+        align-items: center;
+
+        .mobile-menu {
+            @include flex-center-center;
+            column-gap: 40px;
+
+            .hamburger {
+                @include flex-center-center;
+                border: 2px solid black;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                color: black;
+            }
+
+        }
+
+        h1 {
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+    }
+
+}

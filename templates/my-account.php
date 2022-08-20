@@ -41,6 +41,7 @@ if ( is_user_logged_in() ) {
             print_r( get_all_orders() );
             ?>
     </div>
+
     <script type="text/javascript">
         (function() {
 

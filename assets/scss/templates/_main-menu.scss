@@ -1,0 +1,113 @@
+nav.main-menu {
+    @include flex-center-column;
+    width: 100%;
+    grid-gap: 50px;
+    color: $grey-3;
+    background-color: $white;
+
+    h1 {
+        display: none;
+    }
+
+    .hamburger-close {
+        display: none;
+    }
+
+    @media ( max-width: 1000px ) {
+        display: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100vh;
+
+        h1 {
+            display: block;
+            color: black;
+        }
+
+        .hamburger-close {
+            @include flex-center-center;
+            position: absolute;
+            top: 28px;
+            right: 30px;
+            border: 2px solid black;
+            width: 40px;
+            height: 40px;
+            color: black;
+            cursor: pointer;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    a:hover {
+        color: black;
+    }
+
+    ul {
+        border-top: thin solid $grey-3;
+        border-bottom: thin solid $grey-3;
+        font-family: 'montserrat_bold';
+        list-style: none;
+        padding-left: 0px;
+        letter-spacing: 2px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 180px;
+
+        @media ( max-width: 1000px ) {
+            width: 300px;
+            max-width: 100%;
+        }
+
+        ul {
+            padding-left: 20px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .hidden{
+            display: none;
+        }
+    }
+
+    li {
+        cursor: pointer;
+    }
+
+    li.parent,
+    li.parent-expander {
+        font-size: 15px;
+        text-transform: uppercase;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    li.parent-expander {
+        @include flex-space-between;
+        width: 100%;
+        i {
+            padding-left: 30px;
+        }
+    }
+
+    li.parent-expander:hover {
+        color: black;
+    }
+
+    li.child {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .nav-icons {
+        @include flex-center-center;
+        column-gap: 70px;
+    }
+
+}

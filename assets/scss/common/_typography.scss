@@ -14,6 +14,22 @@
  font-weight: 400;
 }
 
+@font-face {
+ font-family: 'montserrat_bold';
+ src: url('../assets/fonts/Montserrat-Bold.ttf');
+ font-weight: 600;
+}
+@font-face {
+ font-family: 'montserrat_medium';
+ src: url('../assets/fonts/Montserrat-Medium.ttf');
+ font-weight: 500;
+}
+@font-face {
+ font-family: 'montserrat_regular';
+ src: url('../assets/fonts/Montserrat-Regular.ttf');
+ font-weight: 400;
+}
+
 h1, h2, h3, h4, h5 {
     font-family: 'spartan_bold';
     letter-spacing: 3px;

@@ -22,9 +22,13 @@ class Photolab_Styles_Scripts {
 			'all'
 		);
 
+        wp_enqueue_script( 'onepage-javascript-script',
+           get_template_directory_uri() . '/static/all.js',
+           []
+       );
+
 
     }
-
 
 }
 ?>

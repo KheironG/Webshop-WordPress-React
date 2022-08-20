@@ -1,6 +1,7 @@
-@import 'assets/scss/common/main';
-@import 'assets/scss/common/colours';
 @import 'assets/scss/common/mixins';
+@import 'assets/scss/common/colours';
+@import 'assets/scss/common/header';
+@import 'assets/scss/common/main';
 @import 'assets/scss/common/styling';
 @import 'assets/scss/common/dimensions';
 @import 'assets/scss/common/typography';
@@ -12,7 +13,7 @@
 @import 'assets/scss/elements/carbon-blocks';
 @import 'assets/scss/elements/product-previews';
 
-@import 'assets/scss/posts/single-product';
-
 @import 'assets/scss/templates/my-account';
 @import 'assets/scss/templates/login';
+@import 'assets/scss/templates/footer';
+@import 'assets/scss/templates/main-menu';

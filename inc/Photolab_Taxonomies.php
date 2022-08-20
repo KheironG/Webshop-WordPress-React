@@ -2,7 +2,7 @@
 /**
  *
  */
-class Photlab_Taxonomies {
+class Photolab_Taxonomies {
 
     public function __construct() {
         add_action( 'init', array( $this, 'gallery_sizes_taxonomy' ) );

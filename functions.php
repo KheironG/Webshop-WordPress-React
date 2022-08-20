@@ -1,5 +1,7 @@
 <?php
 
+add_theme_support( 'post-thumbnails' );
+
 /**
  * Handles custom product types for WooCommerce
  *
@@ -23,7 +25,7 @@
  *
  */
 require_once( get_template_directory() . '/inc/Photolab_Taxonomies.php' );
-new Photlab_Taxonomies();
+new Photolab_Taxonomies();
 
 
 /**
@@ -33,8 +35,6 @@ new Photlab_Taxonomies();
 require_once( get_template_directory() . '/inc/Photolab_Styles_Scripts.php' );
 new Photolab_Styles_Scripts();
 
-
-add_theme_support( 'post-thumbnails' );
 
 
 /**
@@ -47,7 +47,7 @@ new WooCommerce_Ajax();
 
 
 /**
- * Handles woocommerce ajax handler and callback
+ * Shortcodes for customer account functionality
  *
  */
 require_once( get_template_directory() . '/inc/Photolab_Shortcodes.php' );
