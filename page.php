@@ -3,9 +3,6 @@
 * @since Photolab 1.0
 */
 get_header();
-
-$main_menu = wp_get_nav_menu_items( 'main-menu' );
-
-
+the_content();
 get_footer();
 ?>

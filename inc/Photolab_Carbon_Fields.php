@@ -33,6 +33,14 @@ class Photolab_Carbon_Fields {
             }
             return $pages;
         }
+        function get_page_ids() {
+            $get_pages = get_pages( array( 'hierarchical' => true ) );
+            $pages = [];
+            foreach ( $get_pages as $page ) {
+                $pages[$page->ID] = $page->post_title;
+            }
+            return $pages;
+        }
 
         function get_gallery_sizes() {
             $get_gallery_sizes = get_terms( array(
@@ -58,6 +66,7 @@ class Photolab_Carbon_Fields {
             ) );
 
         //Gutenberg Blocks
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-start.php' );
         require_once( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
         require_once( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
         require_once( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );

@@ -23,6 +23,13 @@
     flex-direction: column;
 }
 
+@mixin flex-end-column {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
 @mixin flex-start-start-column {
     display: flex;
     justify-content: flex-start;
