@@ -1,0 +1,83 @@
+.block-product {
+    @include flex-start-column;
+    width: 100%;
+
+    .category-bar {
+        @include flex-start-center;
+        width: 100%;
+        color: $grey-3;
+        background-color: $white;
+        font-family: 'montserrat_bold';
+        font-size: 14px;
+        user-select: none;
+        text-transform: uppercase;
+
+        .product-category {
+            padding: 12px 35px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: black;
+            border-bottom: 2px solid black;
+        }
+
+    }
+
+    .products {
+        @include flex-start-center;
+        flex-wrap: wrap;
+        column-gap: 55px;
+        row-gap: 55px;
+        width: 100%;
+        padding: 80px 80px;
+        box-sizing: border-box;
+
+        .product {
+            @include flex-start-start-column;
+            width: 250px;
+            cursor: pointer;
+            grid-gap: 5px;
+
+            h5 {
+                margin-top: 15px;
+            }
+
+            .image {
+                @include flex-center-center;
+                width: 250px;
+                height: 312px;
+
+                img.landscape-img {
+                    width: 250px;
+                    height: 187px;
+                    object-fit: cover;
+                }
+
+                img.portait-img {
+                    width: 250px;
+                    height: 312px;
+                }
+
+            }
+
+            .price {
+                @include flex-start-center;
+                column-gap: 10px;
+
+                span.price-from {
+                    font-size: 12px;
+                }
+
+                h5 {
+                    font-family: 'montserrat_medium';
+                    font-size: 14px;
+                    margin-top: 0px;
+                }
+
+            }
+
+        }
+    }
+
+}

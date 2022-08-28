@@ -21,8 +21,6 @@ class Photolab_Carbon_Fields {
 
     function register_carbon_fields() {
 
-        wp_enqueue_style( "photolab-admin-css", get_template_directory_uri() . '/static/admin-style.css', array(), "1.0", "all" );
-
         function get_available_pages() {
             $get_pages = get_pages( array( 'hierarchical' => true ) );
             $pages = [];
@@ -33,6 +31,7 @@ class Photolab_Carbon_Fields {
             }
             return $pages;
         }
+
         function get_page_ids() {
             $get_pages = get_pages( array( 'hierarchical' => true ) );
             $pages = [];
@@ -54,24 +53,42 @@ class Photolab_Carbon_Fields {
             return $gallery_sizes;
         }
 
-        Container::make( 'term_meta', __( 'Size Properties' ) )
-            ->where( 'term_taxonomy', '=', 'gallery_sizes' )
-            ->add_fields( array(
-                 Field::make( 'text', 'width' )->set_required( true )->set_width( 50 )->set_help_text( 'in cm' ),
-                 Field::make( 'text', 'height' )->set_required( true )->set_width( 50 )->set_help_text( 'in cm' ),
-                 Field::make( 'text', 'aspect_ratio' )->set_width( 50 ),
-                 Field::make( 'text', 'low_quality' )->set_required( true )->set_width( 50 )->set_help_text( 'required DPI' ),
-                 Field::make( 'text', 'medium_quality' )->set_required( true )->set_width( 50 )->set_help_text( 'required DPI' ),
-                 Field::make( 'text', 'high_quality' )->set_required( true )->set_width( 50 )->set_help_text( 'required DPI' ),
-            ) );
+        function get_product_parent_category_ids() {
+            global $wpdb;
+    		$sql = $wpdb->prepare( "SELECT term_id, name
+                    				FROM wp_terms
+    							 	WHERE slug IN ( 'images', 'frames', 'passepartouts' )"
+    							);
+            $get_categories = $wpdb->get_results( $sql );
+            $categories = [];
+            foreach ( $get_categories as $category ) {
+                $categories[$category->term_id] = $category->name;
+            }
+            return $categories;
+        }
+
+        function get_product_attribute_ids() {
+            global $wpdb;
+    		$sql = $wpdb->prepare( "SELECT attribute_id, attribute_label
+                    				FROM wp_woocommerce_attribute_taxonomies"
+    							);
+            $get_attributes = $wpdb->get_results( $sql );
+            $attributes = [];
+            foreach ( $get_attributes as $attribute ) {
+                $attributes[$attribute->attribute_id] = $attribute->attribute_label;
+            }
+            return $attributes;
+        }
+
 
         //Gutenberg Blocks
         require_once( get_template_directory() . '/inc/gutenberg-blocks/block-start.php' );
-        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
-        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
-        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );
-        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-previews.php' );
-        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-advert.php' );
+        require_once( get_template_directory() . '/inc/gutenberg-blocks/block-product.php' );
+        // require_once( get_template_directory() . '/inc/gutenberg-blocks/block-hero.php' );
+        // require_once( get_template_directory() . '/inc/gutenberg-blocks/block-section.php' );
+        // require_once( get_template_directory() . '/inc/gutenberg-blocks/block-guide.php' );
+        // require_once( get_template_directory() . '/inc/gutenberg-blocks/block-previews.php' );
+        // require_once( get_template_directory() . '/inc/gutenberg-blocks/block-advert.php' );
     }
 
 }
