@@ -58,13 +58,14 @@ Block::make( __( 'Photolab Product' ) )
 			foreach ( $get_attributes as $attribute ) {
 				$filters_array[strtolower($attribute->attribute_label)] = array();
 			}
+
 			foreach ( $get_attribute_terms as $attribute_term ) {
-				$key =  substr( $attribute_term->taxonomy, 3 );
-				array_push( $filters_array[$key], $attribute_term);
+				$name =  substr( $attribute_term->taxonomy, 3 );
+				$key = preg_replace("/[^A-Za-z0-9 ]/", ' ', $name);
+				array_push( $filters_array[$key], $attribute_term );
 			}
 
 		}
-
 		//PRODUCT QUERY
 		$query = new WC_Product_Query( array(
 					 'limit' => 25,
@@ -114,6 +115,29 @@ Block::make( __( 'Photolab Product' ) )
 					<?php
 				}
 				?>
+				<div class="product-filters">
+					<?php
+					foreach ( $filters_array as $key => $filter_group ) {
+						?>
+						<div class="filter-group">
+							<label><?php esc_html_e( $key ); ?></label>
+							<div class="inputs">
+								<?php
+								foreach ($filter_group as $input ) {
+									?>
+									<div class="input">
+										<input type="checkbox" name="" value="<?php esc_html_e( $input->term_id ); ?>">
+										<label for=""><?php esc_html_e( $input->name ); ?></label>
+									</div>
+									<?php
+								}
+								?>
+							</div>
+						</div>
+						<?php
+					}
+					?>
+				</div>
 			</div>
 		</div>
 		<?php

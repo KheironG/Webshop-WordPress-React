@@ -26,6 +26,7 @@
 
     .products {
         @include flex-start-center;
+        position: relative;
         flex-wrap: wrap;
         column-gap: 55px;
         row-gap: 55px;
@@ -78,6 +79,51 @@
             }
 
         }
+
+        .product-filters {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-direction: column;
+            grid-gap: 30px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 350px;
+            height: 300px;
+            max-width: 100%;
+            background-color: $white;
+            text-align: left;
+            box-sizing: border-box;
+            padding: 20px 40px;
+
+            .filter-group {
+                @include flex-start-start-column;
+                width: 100%;
+
+                .inputs {
+                    @include flex-start-center;
+                    width: 100%;
+                    grid-gap: 30px;
+                    border-top: thin solid $grey-3;
+                    flex-wrap: wrap;
+                    padding-top: 12px;
+
+                    .input {
+                        @include flex-center-center;
+                        column-gap: 5px;
+
+                        input {
+                            width: 14px;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
     }
 
 }

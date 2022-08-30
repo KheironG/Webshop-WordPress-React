@@ -37,6 +37,13 @@
     flex-direction: column;
 }
 
+@mixin flex-center-start-column {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
 @mixin flex-center-column {
     display: flex;
     justify-content: center;

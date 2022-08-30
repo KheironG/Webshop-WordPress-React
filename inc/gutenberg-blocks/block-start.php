@@ -47,11 +47,6 @@ Block::make( __( 'Start' ) )
 							<?php
 							echo $strapline;
 							echo $title;
-							if ( $title != null && $title != null ) {
-								?>
-								<span class="white-line-break"></span>
-								<?php
-							}
 							echo $desc;
 						    ?>
 						</a>
@@ -69,16 +64,11 @@ Block::make( __( 'Start' ) )
 						$title = !empty( $bottom_section['title']) ? '<h3>'. esc_html( $bottom_section['title'] ) .'</h3>': null;
 						$desc = !empty( $bottom_section['desc']) ? '<p>'. esc_html( $bottom_section['desc'] ) .'</p>': null;
 						?>
-						<a class="top-section-item" href="<?php esc_attr_e( $bottom_section['url']); ?>"
+						<a class="bottom-section-item" href="<?php esc_attr_e( $bottom_section['url']); ?>"
 							style="background-image: url('<?php echo $bottom_section['background'] ?>')">
 							<?php
 							echo $strapline;
 							echo $title;
-							if ( $title != null && $title != null ) {
-								?>
-								<span class="white-line-break"></span>
-								<?php
-							}
 							echo $desc;
 						    ?>
 						</a>
