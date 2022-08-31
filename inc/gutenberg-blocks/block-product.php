@@ -80,19 +80,26 @@ Block::make( __( 'Photolab Product' ) )
 
 		?>
 		<div class="block-product">
-			<div class="category-bar">
-				<?php
-				foreach ( $get_active_categories as $key => $category ) {
-					$category_class = $key == 0 ? 'product-category active' : 'product-category';
-					$name = $key == 0 ? 'Alla' : esc_html($category->name);
-					?>
-					<div class="<?php echo $category_class; ?>">
-						<?php echo $name; ?>
-					</div>
+			<div class="category-bar-container">
+				<div class="category-bar">
 					<?php
-				}
-				?>
+					foreach ( $get_active_categories as $key => $category ) {
+						$category_class = $key == 0 ? 'product-category active' : 'product-category';
+						$name = $key == 0 ? 'Alla' : esc_html($category->name);
+						?>
+						<div class="<?php echo $category_class; ?>">
+							<?php echo $name; ?>
+						</div>
+						<?php
+					}
+					?>
+				</div>
+				<div class="filters-open" onclick="filterTrigger(this);">
+					<i class="fa-solid fa-caret-left fa-lg"></i>
+					<label>produkt filter</label>
+				</div>
 			</div>
+
 			<div class="products">
 				<?php
 				foreach ( $get_products as $product ) {
@@ -115,28 +122,40 @@ Block::make( __( 'Photolab Product' ) )
 					<?php
 				}
 				?>
-				<div class="product-filters">
-					<?php
-					foreach ( $filters_array as $key => $filter_group ) {
-						?>
-						<div class="filter-group">
-							<label><?php esc_html_e( $key ); ?></label>
-							<div class="inputs">
-								<?php
-								foreach ($filter_group as $input ) {
-									?>
-									<div class="input">
-										<input type="checkbox" name="" value="<?php esc_html_e( $input->term_id ); ?>">
-										<label for=""><?php esc_html_e( $input->name ); ?></label>
-									</div>
-									<?php
-								}
-								?>
-							</div>
+				<div id="product-filters" class="product-filter-container">
+					<div class="product-filters">
+						<div class="filters-close" onclick="filterTrigger(this);">
+							<i class="fa-solid fa-caret-right fa-lg"></i>
+							<label>stäng</label>
 						</div>
 						<?php
-					}
-					?>
+						if ( !empty( $filters_array ) ) {
+							foreach ( $filters_array as $key => $filter_group ) {
+								?>
+								<div class="filter-group">
+									<div class="trigger" onclick="filterGroupTrigger(this);">
+										<label><?php esc_html_e( $key ); ?></label>
+										<i class="fa-solid fa-caret-down"></i>
+									</div>
+									<div class="inputs hidden">
+										<?php
+										foreach ( $filter_group as $input ) {
+											?>
+											<div class="input">
+												<input class="filter" type="checkbox" name="" value="<?php esc_html_e( $input->term_id ); ?>">
+												<label for=""><?php esc_html_e( $input->name ); ?></label>
+											</div>
+											<?php
+										}
+										?>
+									</div>
+								</div>
+								<?php
+							}
+						}
+						?>
+						<button class="more-info-button" type="button" name="button">filtrera</button>
+					</div>
 				</div>
 			</div>
 		</div>

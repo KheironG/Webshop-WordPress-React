@@ -1,14 +1,12 @@
 .page-header {
     width: 100%;
-    padding-left: 60px;
-    padding-top: 10px;
+    padding-left: 40px;
     padding-bottom: 30px;
     background-color: $red-1;
     box-sizing: border-box;
 
     @media ( max-width: 1000px ) {
         padding-left: 20px;
-        padding-top: 0px;
         padding-bottom: 10px;
     }
 
@@ -23,6 +21,7 @@
     }
 
     h2 { margin-top: 40px; }
+
     p {
         width: 100%;
         max-width: 600px;

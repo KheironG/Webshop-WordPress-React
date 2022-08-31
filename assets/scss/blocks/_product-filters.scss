@@ -1,0 +1,114 @@
+.product-filter-container {
+    position: fixed;
+    top: 0px;
+    right: -370px;
+    width: 370px;
+    height: 100%;
+    background-color: $white;
+    transition: right 1s;
+    transition-timing-function: ease-in-out;
+
+
+    .product-filters {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        grid-gap: 50px;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        overflow-y: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        padding: 100px 60px 40px 40px;
+        box-sizing: border-box;
+
+        @media ( max-width: 1000px ) {
+            padding: 70px 40px 80px 40px;
+            height: 100%;
+        }
+
+        .filters-close {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            grid-gap: 8px;
+            color: $grey-3;
+            cursor: pointer;
+
+            i {
+                cursor: pointer;
+            }
+
+            label {
+                font-size: 12px;
+                line-height: 12px;
+                font-family: 'montserrat_bold';
+                text-transform: none;
+                cursor: pointer;
+            }
+
+        }
+
+        .filter-group {
+            @include flex-start-start-column;
+            width: 100%;
+
+            .trigger {
+                @include flex-space-between;
+                width: 100%;
+                border-bottom: thin solid $grey-3;
+                cursor: pointer;
+            }
+
+            .inputs {
+                @include flex-start-center;
+                width: 100%;
+                grid-gap: 30px;
+                flex-wrap: wrap;
+                padding-top: 25px;
+
+                .input {
+                    @include flex-center-center;
+                    column-gap: 5px;
+
+                    label {
+                        text-transform: none;
+                    }
+
+                    input {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+            }
+
+            .hidden {
+                display: none;
+            }
+
+        }
+
+        button {
+            margin-top: 50px;
+            max-width: 200px;
+        }
+
+    }
+
+    @media ( max-width: 1000px ) {
+        width: 100%;
+        right: -100%;
+        justify-content: center;
+        height: 100%;
+
+        .filter-group {
+            max-width: 600px;
+        }
+
+    }
+
+}

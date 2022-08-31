@@ -116,6 +116,7 @@
 
 a.hero-button-link,
 a.more-info-button,
+.more-info-button,
 a.select-product-button,
 .paginate-button {
   max-width: 100%;
@@ -147,11 +148,12 @@ a.hero-button-link,
   padding: 10px 35px;
 }
 
-a.more-info-button {
+a.more-info-button,
+.more-info-button {
   width: 100%;
   padding: 10px 35px;
   color: white;
-  background-color: #F4511E;
+  background-color: #BF360C;
 }
 
 a.select-product-button,
