@@ -56,13 +56,16 @@ Block::make( __( 'Photolab Product' ) )
 			//Constructs product filters array
 			$filters_array = array();
 			foreach ( $get_attributes as $attribute ) {
-				$filters_array[strtolower($attribute->attribute_label)] = array();
+				$filters_array[$attribute->attribute_name] = array(
+					'label' => $attribute->attribute_label,
+					'terms' => array()
+				);
 			}
 
 			foreach ( $get_attribute_terms as $attribute_term ) {
 				$name =  substr( $attribute_term->taxonomy, 3 );
 				$key = preg_replace("/[^A-Za-z0-9 ]/", ' ', $name);
-				array_push( $filters_array[$key], $attribute_term );
+				array_push( $filters_array[$key]['terms'], $attribute_term );
 			}
 
 		}
