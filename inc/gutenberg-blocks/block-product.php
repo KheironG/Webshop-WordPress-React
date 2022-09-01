@@ -61,11 +61,9 @@ Block::make( __( 'Photolab Product' ) )
 					'terms' => array()
 				);
 			}
-
 			foreach ( $get_attribute_terms as $attribute_term ) {
 				$name =  substr( $attribute_term->taxonomy, 3 );
-				$key = preg_replace("/[^A-Za-z0-9 ]/", ' ', $name);
-				array_push( $filters_array[$key]['terms'], $attribute_term );
+				array_push( $filters_array[$name]['terms'], $attribute_term );
 			}
 
 		}
@@ -128,25 +126,25 @@ Block::make( __( 'Photolab Product' ) )
 				<div id="product-filters" class="product-filter-container">
 					<div class="product-filters">
 						<div class="filters-close" onclick="filterTrigger(this);">
-							<i class="fa-solid fa-caret-right fa-lg"></i>
 							<label>stäng</label>
+							<i class="fa-solid fa-caret-right fa-lg"></i>
 						</div>
 						<?php
 						if ( !empty( $filters_array ) ) {
-							foreach ( $filters_array as $key => $filter_group ) {
+							foreach ( $filters_array as $filter_group ) {
 								?>
 								<div class="filter-group">
 									<div class="trigger" onclick="filterGroupTrigger(this);">
-										<label><?php esc_html_e( $key ); ?></label>
+										<label><?php esc_html_e( $filter_group['label'] ); ?></label>
 										<i class="fa-solid fa-caret-down"></i>
 									</div>
 									<div class="inputs hidden">
 										<?php
-										foreach ( $filter_group as $input ) {
+										foreach ( $filter_group['terms'] as $input ) {
 											?>
 											<div class="input">
-												<input class="filter" type="checkbox" name="" value="<?php esc_html_e( $input->term_id ); ?>">
-												<label for=""><?php esc_html_e( $input->name ); ?></label>
+												<input class="filter" type="checkbox" value="<?php esc_html_e( $input->term_id ); ?>">
+												<label ><?php esc_html_e( $input->name ); ?></label>
 											</div>
 											<?php
 										}
@@ -158,6 +156,7 @@ Block::make( __( 'Photolab Product' ) )
 						}
 						?>
 						<button class="more-info-button" type="button" name="button">filtrera</button>
+						<span onclick="clearFilters();">rensa filter</span>
 					</div>
 				</div>
 			</div>

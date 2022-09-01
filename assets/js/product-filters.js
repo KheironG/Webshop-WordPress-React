@@ -5,7 +5,7 @@ function filterTrigger ( trigger ) {
     } else if ( trigger.className === 'filters-close' ) {
         console.log(window.innerWidth);
         if ( window.innerWidth > 1000 ) {
-            filters.style.right = '-370px';
+            filters.style.right = '-420px';
         } else {
             filters.style.right = '-100%';
         }
@@ -20,6 +20,16 @@ function filterGroupTrigger ( trigger ) {
     } else {
         trigger.nextElementSibling.classList.add('hidden');
         trigger.lastElementChild.className = 'fa-solid fa-caret-down';
+    }
+    return;
+}
+
+function clearFilters () {
+    const filters = document.getElementsByClassName('filter');
+    for ( let filter of filters ) {
+        if ( filter.checked == true ) {
+            filter.checked = false;
+        }
     }
     return;
 }
