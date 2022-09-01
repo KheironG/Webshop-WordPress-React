@@ -16,11 +16,11 @@ Block::make( __( 'Photolab Product' ) )
 		//PRODUCT CATEGORIES LOGIC STARTS HERE
 		$parent_category = $fields['product_category'];
 		global $wpdb;
-		$categories_sql = $wpdb->prepare( "SELECT wp_term_taxonomy.term_id, wp_terms.name, wp_terms.slug
-								FROM wp_term_taxonomy
-								LEFT JOIN wp_terms
-								ON wp_term_taxonomy.term_id = wp_terms.term_id
-								WHERE parent=$parent_category OR wp_terms.term_id=$parent_category
+		$categories_sql = $wpdb->prepare( "SELECT {$wpdb->prefix}term_taxonomy.term_id, {$wpdb->prefix}terms.name, {$wpdb->prefix}terms.slug
+								FROM {$wpdb->prefix}term_taxonomy
+								LEFT JOIN {$wpdb->prefix}terms
+								ON {$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id
+								WHERE parent=$parent_category OR {$wpdb->prefix}terms.term_id=$parent_category
 								AND count > 0
 								ORDER BY parent ASC"
 							);
@@ -32,7 +32,7 @@ Block::make( __( 'Photolab Product' ) )
 		if ( !empty( $product_attribute_ids ) ) {
 			//Gets selected attributes
 			$attributes_sql = $wpdb->prepare( "SELECT attribute_name, attribute_label
-											   FROM wp_woocommerce_attribute_taxonomies
+											   FROM {$wpdb->prefix}woocommerce_attribute_taxonomies
 											   WHERE attribute_id IN  (" . implode(',', $product_attribute_ids) . ")"
 											);
 			$get_attributes = $wpdb->get_results( $attributes_sql );
@@ -44,12 +44,12 @@ Block::make( __( 'Photolab Product' ) )
 			}
 
 			//Gets active attribute terms
-			$attribute_terms_sql = $wpdb->prepare( "SELECT wp_terms.term_id, wp_terms.name, wp_term_taxonomy.taxonomy
-												    FROM wp_term_taxonomy
-												    JOIN wp_terms
-				   								    ON wp_term_taxonomy.term_id = wp_terms.term_id
-												    WHERE wp_term_taxonomy.taxonomy IN (" . implode(',', $attributes) . ")
-												    AND wp_term_taxonomy.count > 0"
+			$attribute_terms_sql = $wpdb->prepare( "SELECT {$wpdb->prefix}terms.term_id, {$wpdb->prefix}terms.name, {$wpdb->prefix}term_taxonomy.taxonomy
+												    FROM {$wpdb->prefix}term_taxonomy
+												    JOIN {$wpdb->prefix}terms
+				   								    ON {$wpdb->prefix}term_taxonomy.term_id = {$wpdb->prefix}terms.term_id
+												    WHERE {$wpdb->prefix}term_taxonomy.taxonomy IN (" . implode(',', $attributes) . ")
+												    AND {$wpdb->prefix}term_taxonomy.count > 0"
 												  );
 			$get_attribute_terms = $wpdb->get_results( $attribute_terms_sql );
 

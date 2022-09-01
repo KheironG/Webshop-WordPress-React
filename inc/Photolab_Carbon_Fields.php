@@ -41,22 +41,10 @@ class Photolab_Carbon_Fields {
             return $pages;
         }
 
-        function get_gallery_sizes() {
-            $get_gallery_sizes = get_terms( array(
-                'taxonomy' => 'gallery_sizes',
-                'hide_empty' => false,
-            ) );
-            $gallery_sizes = [];
-            foreach ( $get_gallery_sizes as $gallery_size ) {
-                $gallery_sizes[$gallery_size->term_id] = $gallery_size->name;
-            }
-            return $gallery_sizes;
-        }
-
         function get_product_parent_category_ids() {
             global $wpdb;
     		$sql = $wpdb->prepare( "SELECT term_id, name
-                    				FROM wp_terms
+                    				FROM {$wpdb->prefix}terms
     							 	WHERE slug IN ( 'images', 'frames', 'passepartouts' )"
     							);
             $get_categories = $wpdb->get_results( $sql );
@@ -70,7 +58,7 @@ class Photolab_Carbon_Fields {
         function get_product_attribute_ids() {
             global $wpdb;
     		$sql = $wpdb->prepare( "SELECT attribute_id, attribute_label
-                    				FROM wp_woocommerce_attribute_taxonomies"
+                    				FROM {$wpdb->prefix}woocommerce_attribute_taxonomies"
     							);
             $get_attributes = $wpdb->get_results( $sql );
             $attributes = [];
