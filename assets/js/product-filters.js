@@ -44,4 +44,7 @@ function categoryTrigger ( trigger ) {
             parent.classList.remove('active');
         }
     }
+    //Calls function declared in woocommerce-ajax.js
+    getProducts();
+    return;
 }

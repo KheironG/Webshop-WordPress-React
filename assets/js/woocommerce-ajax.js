@@ -3,8 +3,16 @@ function getProducts() {
     event.preventDefault();
 
     const categoryInputs = document.getElementsByClassName('category');
-    const filterInputs = document.getElementsByClassName('filter');
+    let category = '';
+    for ( let categoryInput of categoryInputs ) {
+        if ( categoryInput.parentElement.classList.contains('active') ) {
+            category = '&category=' + categoryInput.value;
+        }
+    }
 
+    console.log(category);
+
+    const filterInputs = document.getElementsByClassName('filter');
     let filters = [];
     for ( let filterInput of filterInputs ) {
         if ( filterInput.checked === true ) {
@@ -12,14 +20,16 @@ function getProducts() {
         }
     }
 
+    const limit = '&limit=' + document.getElementById('query-limit');
+    const offset = '&offset=' + document.getElementById('query-offset');
+
     // const container = document.getElementById('product-previews-container');
     // container.innerHTML = '';
     //
     // const button = document.getElementById('paginate');
     //
-    // const $limit = document.getElementById('products-limit');
-    // const $offset = document.getElementById('products-offset');
-    // const $category = document.getElementById('products-category-selected');
+
+
     // const $total = document.getElementById('products-total');
     //
     // const limit = '&limit=' + $limit.value;
@@ -27,7 +37,7 @@ function getProducts() {
     const task = '&task=get';
     const attributes = '&attributes=' + filters;
 
-    fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + attributes )
+    fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + attributes + category + limit + offset )
         .then(response => response.json())
         .then( data => {
             console.log(data);

@@ -42,37 +42,47 @@ class WooCommerce_Ajax
         $offset = filter_var( $_GET['offset'], FILTER_SANITIZE_NUMBER_INT );
         $category = filter_var( $_GET['category'], FILTER_SANITIZE_STRING );
         $attributes = explode( ',' , filter_var( $_GET['attributes'], FILTER_SANITIZE_STRING ) );
-        $category_param = $task == 'get' ? 'category' : 'categories';
+        // $category_param = $task == 'get' ? 'category' : 'categories';
 
-        //Constructs tax_query logic
-        $attributes_array = [];
-        foreach ( $attributes as $attribute ) {
-            $instance = explode( ":", $attribute );
-            if ( !array_key_exists( $instance[0], $attributes_array )) {
-                $attributes_array[$instance[0]] = [];
+        //Adds category to tax_query logic
+        $tax_query = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'product_cat',
+                'fields' => 'term_id',
+                'terms' => $category,
+            ),
+        );
+
+        //If selected attributes, adds attributes to tax query logic
+        if ( $attributes[0] != ""  ) {
+            foreach ( $attributes as $attribute ) {
+                $instance = explode( ":", $attribute );
+                if ( !array_key_exists( $instance[0], $attributes_array ) ) {
+                    $attributes_array[$instance[0]] = [];
+                }
             }
-        }
-        foreach ( $attributes as $attribute ) {
-            $instance = explode( ":", $attribute );
-            array_push(
-                $attributes_array[$instance[0]],
-                filter_var( $instance[1], FILTER_SANITIZE_NUMBER_INT )
-            );
-        }
-        $filters_tax_query = [ 'relation' => 'AND', ];
-        foreach ( $attributes_array as $key => $attribute ) {
-            $tax_query['taxonomy'] = filter_var( $key, FILTER_SANITIZE_STRING );
-            $tax_query['fields'] = 'term_id';
-            $tax_query['terms'] = $attribute;
-            $tax_query['operators'] = 'IN';
-            array_push( $filters_tax_query, $tax_query );
+            foreach ( $attributes as $attribute ) {
+                $instance = explode( ":", $attribute );
+                array_push(
+                    $attributes_array[$instance[0]],
+                    filter_var( $instance[1], FILTER_SANITIZE_NUMBER_INT )
+                );
+            }
+            foreach ( $attributes_array as $key => $attribute ) {
+                $query['taxonomy'] = filter_var( $key, FILTER_SANITIZE_STRING );
+                $query['fields'] = 'term_id';
+                $query['terms'] = $attribute;
+                array_push( $tax_query, $query );
+            }
         }
 
         //Product query starts here
         $query = new WC_Product_Query( array(
-					 'limit' => 25,
+					 'limit' => $limit,
+                     'offset' => $offset,
 					 'status' => 'publish',
-					 'tax_query' => $filters_tax_query,
+					 'tax_query' => $tax_query,
 					) );
 		$get_products = $query->get_products();
         $products = [];
@@ -82,6 +92,8 @@ class WooCommerce_Ajax
 
         echo json_encode( $products );
         exit;
+
+
 
         // if ( $task === 'total' ) {
         //     $count = get_term( intval( $category ), 'product_cat' );

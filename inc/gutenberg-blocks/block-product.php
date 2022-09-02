@@ -7,7 +7,9 @@ Block::make( __( 'Photolab Product' ) )
 		Field::make( 'select', 'product_category', __( 'Product Category' ) )
         ->add_options( 'get_product_parent_category_ids' ),
 		Field::make( 'multiselect', 'product_attributes', __( 'Product Filters' ) )
-        ->add_options( 'get_product_attribute_ids' )
+        ->add_options( 'get_product_attribute_ids' ),
+		Field::make( 'text', 'limit', __( 'Products Per Page' ) )
+		->set_default_value( 25 ),
 	) )
 	->set_icon( 'camera' )
     ->set_mode( 'both' )
@@ -161,6 +163,10 @@ Block::make( __( 'Photolab Product' ) )
 						<span onclick="clearFilters();">rensa filter</span>
 					</div>
 				</div>
+				<input type="hidden" name="query-limit" id="query-limit"
+					value="<?php echo esc_html( $fields['product_category'] );?>">
+				<input type="hidden" name="query-offset" id="query-offset"
+					value="query-offset" value="0">
 			</div>
 		</div>
 		<?php
