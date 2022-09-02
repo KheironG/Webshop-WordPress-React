@@ -583,6 +583,7 @@ button.woocommerce-form-register__submit {
 .block-product .category-bar-container .category-bar .product-category {
   padding: 12px 35px;
   cursor: pointer;
+  border-bottom: 2px solid #FFFFFF;
 }
 .block-product .category-bar-container .category-bar .active {
   color: black;

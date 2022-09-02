@@ -88,8 +88,9 @@ Block::make( __( 'Photolab Product' ) )
 						$category_class = $key == 0 ? 'product-category active' : 'product-category';
 						$name = $key == 0 ? 'Alla' : esc_html($category->name);
 						?>
-						<div class="<?php echo $category_class; ?>">
+						<div class="<?php echo $category_class; ?>" onclick="categoryTrigger(this);">
 							<?php echo $name; ?>
+							<input class="category" type="hidden" value="<?php echo $category->term_id; ?>">
 						</div>
 						<?php
 					}
@@ -143,7 +144,8 @@ Block::make( __( 'Photolab Product' ) )
 										foreach ( $filter_group['terms'] as $input ) {
 											?>
 											<div class="input">
-												<input class="filter" type="checkbox" value="<?php esc_html_e( $input->term_id ); ?>">
+												<input class="filter" type="checkbox"
+												value="<?php esc_html_e( $input->taxonomy ); ?>:<?php esc_html_e( $input->term_id ); ?>">
 												<label ><?php esc_html_e( $input->name ); ?></label>
 											</div>
 											<?php
@@ -155,7 +157,7 @@ Block::make( __( 'Photolab Product' ) )
 							}
 						}
 						?>
-						<button class="more-info-button" type="button" name="button">filtrera</button>
+						<button class="more-info-button" type="button" name="button" onclick="getProducts();">filtrera</button>
 						<span onclick="clearFilters();">rensa filter</span>
 					</div>
 				</div>
