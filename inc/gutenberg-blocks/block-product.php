@@ -103,29 +103,15 @@ Block::make( __( 'Photolab Product' ) )
 					<label>produkt filter</label>
 				</div>
 			</div>
-
 			<div class="products">
-				<?php
-				foreach ( $get_products as $product ) {
-					$price = $product->get_type() === 'variable' ? $product->get_variation_price( 'min' ) : $product->get_price();
-					$price_from = $product->get_type() === 'variable' ? '<span class="price-from">från </span>' : null;
-					$image = wp_get_attachment_image_src( $product->image_id, '' );
-					$image_class = $image[1] > $image[2] ? "landscape-img" : "portrait-img";
-					?>
-					<div class="product">
-						<div class="image">
-							<img class="<?php echo $image_class; ?>" src="<?php esc_attr_e( $image[0] ); ?>" alt="">
-						</div>
-						<h5><?php esc_html_e( $product->name ); ?></h5>
-						<div class="price">
-							<?php echo $price_from; ?>
-							<h5><?php echo wc_price( $price ); ?></h5>
-						</div>
-
-					</div>
+				<div id="loader" class="lds-roller hidden"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+				<div id="products-container">
 					<?php
-				}
-				?>
+					foreach ( $get_products as $product ) {
+						get_template_part( 'template-parts/part', 'product-preview', $product );
+					}
+					?>
+				</div>
 				<div id="product-filters" class="product-filter-container">
 					<div class="product-filters">
 						<div class="filters-close" onclick="filterTrigger(this);">
@@ -163,10 +149,8 @@ Block::make( __( 'Photolab Product' ) )
 						<span onclick="clearFilters();">rensa filter</span>
 					</div>
 				</div>
-				<input type="hidden" name="query-limit" id="query-limit"
-					value="<?php echo esc_html( $fields['product_category'] );?>">
-				<input type="hidden" name="query-offset" id="query-offset"
-					value="query-offset" value="0">
+				<input type="hidden" name="limit" id="limit" value="<?php esc_html_e( $fields['limit'] );?>">
+				<input type="hidden" name="offset" id="offset" value="0">
 			</div>
 		</div>
 		<?php

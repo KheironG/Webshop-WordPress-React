@@ -2,8 +2,7 @@ function filterTrigger ( trigger ) {
     const filters = document.getElementById('product-filters');
     if ( trigger.className === 'filters-open' ) {
         filters.style.right = '0px';
-    } else if ( trigger.className === 'filters-close' ) {
-        console.log(window.innerWidth);
+    } else if ( trigger.className === 'filters-close' || trigger === 'filters-close' ) {
         if ( window.innerWidth > 1000 ) {
             filters.style.right = '-420px';
         } else {
@@ -44,7 +43,7 @@ function categoryTrigger ( trigger ) {
             parent.classList.remove('active');
         }
     }
-    //Calls function declared in woocommerce-ajax.js
+    //below function declared in woocommerce-ajax.js
     getProducts();
     return;
 }

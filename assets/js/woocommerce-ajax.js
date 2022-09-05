@@ -2,6 +2,20 @@ function getProducts() {
 
     event.preventDefault();
 
+    const $container = document.getElementById('products-container');
+    const $loader = document.getElementById('loader');
+
+    while( $container.firstChild && $container.removeChild($container.firstChild));
+    $loader.classList.remove('hidden');
+    filterTrigger('filters-close');
+
+    const $limit  = document.getElementById('limit');
+    const $offset = document.getElementById('offset');
+
+    const limit  = '&limit=' + $limit.value;
+    const offset = '&offset=' + $offset.value;
+    const task   = '&task=get';
+
     const categoryInputs = document.getElementsByClassName('category');
     let category = '';
     for ( let categoryInput of categoryInputs ) {
@@ -10,8 +24,6 @@ function getProducts() {
         }
     }
 
-    console.log(category);
-
     const filterInputs = document.getElementsByClassName('filter');
     let filters = [];
     for ( let filterInput of filterInputs ) {
@@ -19,40 +31,19 @@ function getProducts() {
             filters.push( filterInput.value );
         }
     }
-
-    const limit = '&limit=' + document.getElementById('query-limit');
-    const offset = '&offset=' + document.getElementById('query-offset');
-
-    // const container = document.getElementById('product-previews-container');
-    // container.innerHTML = '';
-    //
-    // const button = document.getElementById('paginate');
-    //
-
-
-    // const $total = document.getElementById('products-total');
-    //
-    // const limit = '&limit=' + $limit.value;
-    // const category = '&category=' + $category.value;
-    const task = '&task=get';
     const attributes = '&attributes=' + filters;
 
     fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + attributes + category + limit + offset )
-        .then(response => response.json())
-        .then( data => {
-            console.log(data);
+        .then(response => response.text())
+        .then( html => {
+            const domParser = new DOMParser();
+            const products = domParser.parseFromString( html, "text/html");
+            for ( let product of products.body.children ) {
+                $container.append(product.cloneNode(true));
+            }
+            $loader.classList.add('hidden');
         });
 
-
-    // fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + '&attributes=' + filters )
-    //     .then(response => response.text())
-    //     .then(html => {
-    //         const domParser = new DOMParser();
-    //         const products = domParser.parseFromString( html, "text/html");
-    //         for ( let product of products.body.children ) {
-    //             container.append(product.cloneNode(true));
-    //         }
-    //     });
     //
     // fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + '&task=total' + category )
     //     .then(response => response.json())

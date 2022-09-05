@@ -23,8 +23,8 @@ class WooCommerce_Ajax
         wp_localize_script( 'photolab-woocommerce-ajax',
             'woocommerce_ajax',
             array(
-                'ajax_url'         => admin_url( 'admin-ajax.php' ),
-                'nonce'            => wp_create_nonce('photolab-woocommerce-ajax'),
+                'ajax_url' => admin_url( 'admin-ajax.php' ),
+                'nonce'    => wp_create_nonce('photolab-woocommerce-ajax'),
         ));
     }
 
@@ -85,15 +85,13 @@ class WooCommerce_Ajax
 					 'tax_query' => $tax_query,
 					) );
 		$get_products = $query->get_products();
-        $products = [];
+
+        ob_start();
         foreach ( $get_products as $product ) {
-            array_push( $products, $product->get_data() );
+            get_template_part( 'template-parts/part', 'product-preview', $product );
         }
-
-        echo json_encode( $products );
+        echo ob_get_clean();
         exit;
-
-
 
         // if ( $task === 'total' ) {
         //     $count = get_term( intval( $category ), 'product_cat' );
@@ -103,12 +101,7 @@ class WooCommerce_Ajax
 
         // $query = $woocommerce->get( 'products', [ 'status' => 'publish', $category_param => $category, 'per_page' => $limit, 'offset' => $offset ] );
         //
-        // ob_start();
-        // foreach ( $query as $args ) {
-        //     get_template_part( 'template-parts/part', 'product-preview', $args );
-        // }
-        // echo ob_get_clean();
-        // exit;
+
     }
 
 }
