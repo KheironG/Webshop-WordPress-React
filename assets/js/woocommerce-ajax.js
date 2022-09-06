@@ -33,7 +33,7 @@ function getProducts() {
     }
     const attributes = '&attributes=' + filters;
 
-    fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + attributes + category + limit + offset )
+    fetch( woocommerce_ajax.ajax_url + '?action=photolab_ajax' + task + attributes + category + limit )
         .then(response => response.text())
         .then( html => {
             const domParser = new DOMParser();

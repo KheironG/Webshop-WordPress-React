@@ -16,7 +16,8 @@ Block::make( __( 'Photolab Product' ) )
 	->set_render_callback( function ( $fields, $attributes, $inner_blocks ) {
 
 		//PRODUCT CATEGORIES LOGIC STARTS HERE
-		$parent_category = $fields['product_category'];
+		$parent_category = esc_html( $fields['product_category'] );
+		$limit = esc_html( $fields['limit'] );
 		global $wpdb;
 		$categories_sql = $wpdb->prepare( "SELECT {$wpdb->prefix}term_taxonomy.term_id, {$wpdb->prefix}terms.name, {$wpdb->prefix}terms.slug
 								FROM {$wpdb->prefix}term_taxonomy
@@ -71,7 +72,7 @@ Block::make( __( 'Photolab Product' ) )
 		}
 		//PRODUCT QUERY
 		$query = new WC_Product_Query( array(
-					 'limit' => 25,
+					 'limit' => $limit,
 					 'status' => 'publish',
 					 'tax_query' => array( array(
 						   'taxonomy' => 'product_cat',
@@ -80,7 +81,6 @@ Block::make( __( 'Photolab Product' ) )
 						) )
 					) );
 		$get_products = $query->get_products();
-
 		?>
 		<div class="block-product">
 			<div class="category-bar-container">
@@ -98,9 +98,9 @@ Block::make( __( 'Photolab Product' ) )
 					}
 					?>
 				</div>
-				<div class="filters-open" onclick="filterTrigger(this);">
+				<div id="filters-open" onclick="filterTrigger(this);">
 					<i class="fa-solid fa-caret-left fa-lg"></i>
-					<label>produkt filter</label>
+					<label>filter  <span id="active-filters"></span></label>
 				</div>
 			</div>
 			<div class="products">
@@ -114,7 +114,7 @@ Block::make( __( 'Photolab Product' ) )
 				</div>
 				<div id="product-filters" class="product-filter-container">
 					<div class="product-filters">
-						<div class="filters-close" onclick="filterTrigger(this);">
+						<div id="filters-close" onclick="filterTrigger(this);">
 							<label>stäng</label>
 							<i class="fa-solid fa-caret-right fa-lg"></i>
 						</div>
@@ -149,8 +149,8 @@ Block::make( __( 'Photolab Product' ) )
 						<span onclick="clearFilters();">rensa filter</span>
 					</div>
 				</div>
-				<input type="hidden" name="limit" id="limit" value="<?php esc_html_e( $fields['limit'] );?>">
-				<input type="hidden" name="offset" id="offset" value="0">
+				<input type="hidden" name="limit" id="limit" value="<?php echo $limit;?>">
+				<input type="hidden" name="offset" id="offset" value="<?php echo count( $get_products ); ?>">
 			</div>
 		</div>
 		<?php

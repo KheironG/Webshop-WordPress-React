@@ -715,7 +715,7 @@ button.woocommerce-form-register__submit {
   color: black;
   border-bottom: 2px solid black;
 }
-.block-product .category-bar-container .filters-open {
+.block-product .category-bar-container #filters-open {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -738,7 +738,7 @@ button.woocommerce-form-register__submit {
   cursor: pointer;
 }
 @media (max-width: 1000px) {
-  .block-product .category-bar-container .filters-open {
+  .block-product .category-bar-container #filters-open {
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -758,15 +758,19 @@ button.woocommerce-form-register__submit {
             box-sizing: border-box;
   }
 }
-.block-product .category-bar-container .filters-open i {
+.block-product .category-bar-container #filters-open i {
   cursor: pointer;
 }
-.block-product .category-bar-container .filters-open label {
+.block-product .category-bar-container #filters-open label {
   font-size: 12px;
   line-height: 12px;
   font-family: "montserrat_bold";
   text-transform: none;
   cursor: pointer;
+  text-transform: uppercase;
+}
+.block-product .category-bar-container #filters-open.active {
+  color: black;
 }
 .block-product .products {
   width: 100%;
@@ -921,7 +925,7 @@ button.woocommerce-form-register__submit {
     height: 100%;
   }
 }
-.product-filter-container .product-filters .filters-close {
+.product-filter-container .product-filters #filters-close {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -937,10 +941,10 @@ button.woocommerce-form-register__submit {
   cursor: pointer;
   margin-bottom: 30px;
 }
-.product-filter-container .product-filters .filters-close i {
+.product-filter-container .product-filters #filters-close i {
   cursor: pointer;
 }
-.product-filter-container .product-filters .filters-close label {
+.product-filter-container .product-filters #filters-close label {
   font-size: 12px;
   line-height: 12px;
   font-family: "montserrat_bold";

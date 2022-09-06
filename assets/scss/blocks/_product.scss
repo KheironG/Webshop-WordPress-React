@@ -31,7 +31,7 @@
 
         }
 
-        .filters-open {
+        #filters-open {
             @include flex-center-center;
             position: absolute;
             z-index: auto;
@@ -68,9 +68,15 @@
                 font-family: 'montserrat_bold';
                 text-transform: none;
                 cursor: pointer;
+                text-transform: uppercase;
             }
 
         }
+
+        #filters-open.active {
+            color: black;
+        }
+
     }
 
     .products {
@@ -80,7 +86,7 @@
         #loader {
             margin-top: 30px;
         }
-        
+
         #products-container {
             @include flex-start-center;
             flex-wrap: wrap;
